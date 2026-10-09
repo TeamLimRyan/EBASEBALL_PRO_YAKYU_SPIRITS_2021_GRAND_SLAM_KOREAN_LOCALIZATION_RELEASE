@@ -1,0 +1,6 @@
+*.nsp
+*.nca
+*.keys
+*.sav
+__pycache__/
+*.zip
