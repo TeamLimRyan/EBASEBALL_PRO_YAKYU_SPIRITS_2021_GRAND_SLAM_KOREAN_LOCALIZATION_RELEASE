@@ -19,13 +19,13 @@
       "sha256": "0ed8e7edd46f5318ac83bc91b0d312096cd1b91fd25f751f1e4f8520f89928e2"
     },
     "output": {
-      "size": 6884780400,
-      "sha256": "0c3167c6d9f10a4fa11ee92274664ef5a7d3ce931b68689aa3d84be5de96b227"
+      "size": 6884783309,
+      "sha256": "d6330f323d6a982fa1254bcaa04a1fdb970132fbd679c4f96f57e8e86b2b45e7"
     },
     "patch": {
       "path": "patch/game.xdelta",
-      "size": 2141672643,
-      "sha256": "1ca39034cb3a4a7657f7bb9b270663a5267aabc57ce953cc8b28bee16a9d496e"
+      "size": 1341914943,
+      "sha256": "d2881fa22fcbc340a78cc6a201ba928f22789b76fb452ae8f4f0854484ba1ca5"
     }
   },
   "files": [
@@ -36,8 +36,8 @@
         "sha256": "dbf86017d51b7cff69dca33ea05a93f290cce031ab01e19899a74c3bc05ca809"
       },
       "output": {
-        "size": 22058578,
-        "sha256": "8e8313f91021b9c561d9c2130a20b92804807a09bde08647438dd4e70fe6ec4a"
+        "size": 22060003,
+        "sha256": "e22c7e10a46c865e3cabc0f65f17fcc70d9b1385f12a2306a56077907be80e51"
       },
       "destinations": [
         "0100F88012E34000/exefs/main"
@@ -60,7 +60,7 @@
         "0100F88012E34001/romfs/cdvdroot/RES00.RDB"
       ],
       "source_offset": 21985677,
-      "target_offset": 22058578
+      "target_offset": 22060003
     },
     {
       "source": "effective/romfs/cdvdroot/RES00.RDI",
@@ -77,7 +77,7 @@
         "0100F88012E34001/romfs/cdvdroot/RES00.RDI"
       ],
       "source_offset": 4477573517,
-      "target_offset": 5171725906
+      "target_offset": 5171727331
     },
     {
       "source": "effective/romfs/cdvdroot/RES11.RDB",
@@ -94,7 +94,7 @@
         "0100F88012E34001/romfs/cdvdroot/RES11.RDB"
       ],
       "source_offset": 4477829517,
-      "target_offset": 5171981906
+      "target_offset": 5171983331
     },
     {
       "source": "effective/romfs/cdvdroot/RES12.RDB",
@@ -111,7 +111,7 @@
         "0100F88012E34001/romfs/cdvdroot/RES12.RDB"
       ],
       "source_offset": 4886270861,
-      "target_offset": 5587348562
+      "target_offset": 5587349987
     },
     {
       "source": "effective/romfs/cdvdroot/RES13.RDB",
@@ -128,7 +128,7 @@
         "0100F88012E34001/romfs/cdvdroot/RES13.RDB"
       ],
       "source_offset": 4934653325,
-      "target_offset": 5652803154
+      "target_offset": 5652804579
     },
     {
       "source": "effective/romfs/cdvdroot/RES14.RDB",
@@ -145,7 +145,7 @@
         "0100F88012E34001/romfs/cdvdroot/RES14.RDB"
       ],
       "source_offset": 5016825229,
-      "target_offset": 5759300178
+      "target_offset": 5759301603
     },
     {
       "source": "effective/romfs/cdvdroot/RES15.RDB",
@@ -162,7 +162,7 @@
         "0100F88012E34001/romfs/cdvdroot/RES15.RDB"
       ],
       "source_offset": 5044180877,
-      "target_offset": 5793848402
+      "target_offset": 5793849827
     },
     {
       "source": "effective/romfs/cdvdroot/RES16.RDB",
@@ -179,7 +179,7 @@
         "0100F88012E34001/romfs/cdvdroot/RES16.RDB"
       ],
       "source_offset": 5091367821,
-      "target_offset": 5844015186
+      "target_offset": 5844016611
     },
     {
       "source": "effective/romfs/cdvdroot/RES17.RDB",
@@ -196,7 +196,7 @@
         "0100F88012E34001/romfs/cdvdroot/RES17.RDB"
       ],
       "source_offset": 5140478349,
-      "target_offset": 5916819026
+      "target_offset": 5916820451
     },
     {
       "source": "effective/romfs/cdvdroot/RES18.RDB",
@@ -213,7 +213,7 @@
         "0100F88012E34001/romfs/cdvdroot/RES18.RDB"
       ],
       "source_offset": 5866165645,
-      "target_offset": 6729477714
+      "target_offset": 6729479139
     },
     {
       "source": "effective/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_1.jpg",
@@ -230,7 +230,7 @@
         "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_1.jpg"
       ],
       "source_offset": 5991017357,
-      "target_offset": 6854743122
+      "target_offset": 6854744547
     },
     {
       "source": "effective/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_2.jpg",
@@ -247,7 +247,7 @@
         "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_2.jpg"
       ],
       "source_offset": 5991271832,
-      "target_offset": 6855084592
+      "target_offset": 6855086017
     },
     {
       "source": "effective/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_3.jpg",
@@ -264,7 +264,7 @@
         "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_3.jpg"
       ],
       "source_offset": 5992093370,
-      "target_offset": 6856064359
+      "target_offset": 6856065784
     },
     {
       "source": "effective/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_4.jpg",
@@ -281,7 +281,7 @@
         "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_4.jpg"
       ],
       "source_offset": 5993054882,
-      "target_offset": 6857128325
+      "target_offset": 6857129750
     },
     {
       "source": "effective/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_5.jpg",
@@ -298,7 +298,7 @@
         "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_5.jpg"
       ],
       "source_offset": 5993884781,
-      "target_offset": 6858045730
+      "target_offset": 6858047155
     },
     {
       "source": "effective/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_6.jpg",
@@ -315,7 +315,7 @@
         "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_6.jpg"
       ],
       "source_offset": 5994704432,
-      "target_offset": 6858977647
+      "target_offset": 6858979072
     },
     {
       "source": "effective/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_7.jpg",
@@ -332,7 +332,7 @@
         "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_7.jpg"
       ],
       "source_offset": 5995739961,
-      "target_offset": 6860147754
+      "target_offset": 6860149179
     },
     {
       "source": "effective/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_8.jpg",
@@ -349,7 +349,7 @@
         "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_8.jpg"
       ],
       "source_offset": 5996591282,
-      "target_offset": 6861168851
+      "target_offset": 6861170276
     },
     {
       "source": "effective/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_9.jpg",
@@ -366,7 +366,7 @@
         "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_9.jpg"
       ],
       "source_offset": 5997588157,
-      "target_offset": 6862385574
+      "target_offset": 6862386999
     },
     {
       "source": "effective/romfs/cdvdroot/html_document/manual.htdocs/index.html",
@@ -383,7 +383,7 @@
         "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/index.html"
       ],
       "source_offset": 5998053541,
-      "target_offset": 6862977612
+      "target_offset": 6862979037
     },
     {
       "source": "effective/exefs/main",
@@ -392,21 +392,21 @@
         "sha256": "dbf86017d51b7cff69dca33ea05a93f290cce031ab01e19899a74c3bc05ca809"
       },
       "output": {
-        "size": 21801293,
-        "sha256": "8cf1493aa4d526d4289ee61c4da310f59c5481327a84e71a348b80d4366fe2a1"
+        "size": 21802777,
+        "sha256": "6c96b39eee5aa3ffc6656646fa583a2892d7bc18f550b17d52676d57687f973c"
       },
       "destinations": [
         "0100F88012E34001/exefs/main"
       ],
       "source_offset": 5998055036,
-      "target_offset": 6862979107
+      "target_offset": 6862980532
     }
   ],
   "targets": [
     {
       "path": "0100F88012E34000/exefs/main",
-      "size": 22058578,
-      "sha256": "8e8313f91021b9c561d9c2130a20b92804807a09bde08647438dd4e70fe6ec4a"
+      "size": 22060003,
+      "sha256": "e22c7e10a46c865e3cabc0f65f17fcc70d9b1385f12a2306a56077907be80e51"
     },
     {
       "path": "0100F88012E34000/romfs/cdvdroot/RES00.RDB",
@@ -610,8 +610,8 @@
     },
     {
       "path": "0100F88012E34001/exefs/main",
-      "size": 21801293,
-      "sha256": "8cf1493aa4d526d4289ee61c4da310f59c5481327a84e71a348b80d4366fe2a1"
+      "size": 21802777,
+      "sha256": "6c96b39eee5aa3ffc6656646fa583a2892d7bc18f550b17d52676d57687f973c"
     }
   ],
   "control": {
@@ -631,5 +631,5 @@
     "target_name": "eBASEBALL_2021_v1.12.0_Korean_Control_v0.93.nsp",
     "verification": "Unchanged v0.92 control delta; content is identical. Game files updated independently."
   },
-  "installation_change": "Feedback fixes for 2021 font continuation, age/career suffixes, Korean surname context and manual label."
+  "installation_change": "2021 font, age/career suffixes, manual label, and official Korea Olympic roster/player data."
 }
