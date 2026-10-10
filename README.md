@@ -1,5 +1,7 @@
 # 프로야구 스피리츠 2021 그랜드슬램 한국어 패치 v0.92
 
+**[상세 설치 매뉴얼](INSTALL_KO.md)** — 원본 준비, 적용 명령, PC·Odin 설치, 오류 해결, 원본 해시표
+
 **[v0.92 설치 ZIP 다운로드](https://github.com/TeamLimRyan/EBASEBALL_PRO_YAKYU_SPIRITS_2021_GRAND_SLAM_KOREAN_LOCALIZATION_RELEASE/releases/download/v0.92/eBASEBALL_2021_Korean_v0.92_xdelta.zip)** · [릴리스 안내](https://github.com/TeamLimRyan/EBASEBALL_PRO_YAKYU_SPIRITS_2021_GRAND_SLAM_KOREAN_LOCALIZATION_RELEASE/releases/tag/v0.92)
 
 GitHub의 Source code ZIP은 설치 패키지가 아닙니다. 위 설치 ZIP 전체를 받아 주세요.
