@@ -1,122 +1,465 @@
 {
-  "result": "BUILT",
-  "version": "0.92",
-  "new_roundtrip": "NOT_RUN_USER_REQUEST",
-  "new_full_install": "NOT_RUN_USER_REQUEST",
-  "remote_redownload": "NOT_RUN_USER_REQUEST",
-  "bundle_verification": {
-    "result": "BUILT",
-    "version": "0.92",
-    "source": {
-      "size": 6020040713,
-      "sha256": "0ed8e7edd46f5318ac83bc91b0d312096cd1b91fd25f751f1e4f8520f89928e2"
-    },
-    "target": {
-      "size": 6884780758,
-      "sha256": "fcb58d340275f3d3aebfb2da8cdb9b2c9a0a341f2fdaabbda568c00921ad0c6a"
-    },
-    "patch": {
-      "size": 1341910272,
-      "sha256": "e0332485a38ad33a700bb3a485aed5ee53b98ad819789715fdbdc0910401fc55"
-    },
-    "command": [
-      "-e",
-      "-a",
-      "-A",
-      "-S",
-      "none",
-      "-9",
-      "-B",
-      "1073741824",
-      "-s",
-      "SOURCE",
-      "TARGET",
-      "PATCH"
-    ],
-    "unique_source_files": 21,
-    "output_files": 22,
-    "installed_paths": 42,
-    "roundtrip": "NOT_RUN_USER_REQUEST",
-    "full_install": "NOT_RUN_USER_REQUEST",
-    "approved_target_stream_hash_checked": true,
-    "targets_unchanged": true,
-    "optional_control": "Unchanged v0.91 bytes; historical roundtrip reused."
-  },
-  "fixture_test_verification": {
+  "version": "0.93",
+  "result": "PASS",
+  "feedback_completed": 5,
+  "feedback_total": 5,
+  "crash_acceptance": "Not reproduced; accepted per explicit owner instruction. No crash-specific repair claimed.",
+  "full_install": {
     "result": "PASS",
-    "tests": 14,
-    "originals_unchanged": true,
+    "paths": 42,
+    "powershell": "5.1.26100.9444"
+  },
+  "incremental_install": {
+    "result": "PASS",
+    "unique_files": 22,
+    "paths": 42,
+    "existing_output_rejected": true,
+    "wrong_source_rejected_before_output": true
+  },
+  "full_delta_roundtrip": {
+    "stage": "bundle_and_roundtrip",
+    "status": "completed",
+    "completed": 1,
+    "total": 1,
+    "remaining": 0,
+    "percent": 100,
+    "workers": 0,
+    "source_sha256": "0ed8e7edd46f5318ac83bc91b0d312096cd1b91fd25f751f1e4f8520f89928e2",
+    "target_sha256": "0c3167c6d9f10a4fa11ee92274664ef5a7d3ce931b68689aa3d84be5de96b227",
+    "delta_sha256": "1ca39034cb3a4a7657f7bb9b270663a5267aabc57ce953cc8b28bee16a9d496e"
+  },
+  "incremental_delta_roundtrips": {
     "jobs": [
       {
-        "name": "eden installation",
+        "id": "0100F88012E34000_exefs_main",
         "status": "completed",
-        "scope": "small real-VCDIFF fixture"
+        "source": "0100F88012E34000/exefs/main",
+        "delta": "patch/0100F88012E34000_exefs_main.xdelta",
+        "roundtrip": "PASS",
+        "bytes": 2016
       },
       {
-        "name": "completed output rerun",
+        "id": "0100F88012E34000_romfs_cdvdroot_RES00.RDB",
         "status": "completed",
-        "scope": "small real-VCDIFF fixture"
+        "source": "0100F88012E34000/romfs/cdvdroot/RES00.RDB",
+        "delta": "patch/0100F88012E34000_romfs_cdvdroot_RES00.RDB.xdelta",
+        "roundtrip": "PASS",
+        "bytes": 18284
       },
       {
-        "name": "atmosphere installation",
+        "id": "0100F88012E34000_romfs_cdvdroot_RES00.RDI",
         "status": "completed",
-        "scope": "small real-VCDIFF fixture"
+        "source": "0100F88012E34000/romfs/cdvdroot/RES00.RDI",
+        "delta": "patch/0100F88012E34000_romfs_cdvdroot_RES00.RDI.xdelta",
+        "roundtrip": "PASS",
+        "bytes": 38
       },
       {
-        "name": "alternate extraction paths",
+        "id": "0100F88012E34001_exefs_main",
         "status": "completed",
-        "scope": "small real-VCDIFF fixture"
+        "source": "0100F88012E34001/exefs/main",
+        "delta": "patch/0100F88012E34001_exefs_main.xdelta",
+        "roundtrip": "PASS",
+        "bytes": 1946
+      }
+    ],
+    "workers": 1,
+    "total": 4,
+    "completed": 4,
+    "remaining": 0,
+    "percent": 100.0
+  },
+  "font_regression": {
+    "status": "PASS",
+    "checks": [
+      "glyph index",
+      "font kind",
+      "two-byte cursor advancement"
+    ],
+    "results": [
+      {
+        "label": "effective_final",
+        "source_sha256": "8e8313f91021b9c561d9c2130a20b92804807a09bde08647438dd4e70fe6ec4a",
+        "lookups_tested": 12141,
+        "passed": true,
+        "failures": []
       },
       {
-        "name": "resume verified partial output",
-        "status": "completed",
-        "scope": "small real-VCDIFF fixture"
+        "label": "program1_before",
+        "source_sha256": "bb245122b4c448484af9b902c902ee60b13a87c50cf56780ac365c1de86af46a",
+        "lookups_tested": 1,
+        "passed": false,
+        "failures": [
+          {
+            "code": "8101",
+            "observed": [
+              11284,
+              65535,
+              1
+            ],
+            "expected": [
+              11284,
+              2,
+              2
+            ]
+          }
+        ]
       },
       {
-        "name": "reject wrong original hash",
-        "status": "completed",
-        "scope": "small real-VCDIFF fixture"
-      },
-      {
-        "name": "reject missing original",
-        "status": "completed",
-        "scope": "small real-VCDIFF fixture"
-      },
-      {
-        "name": "reject tampered patch",
-        "status": "completed",
-        "scope": "small real-VCDIFF fixture"
-      },
-      {
-        "name": "preserve unrelated output folder",
-        "status": "completed",
-        "scope": "small real-VCDIFF fixture"
-      },
-      {
-        "name": "reject source output overlap",
-        "status": "completed",
-        "scope": "small real-VCDIFF fixture"
-      },
-      {
-        "name": "optional Control standalone apply",
-        "status": "completed",
-        "scope": "small real-VCDIFF fixture"
-      },
-      {
-        "name": "optional Control completed rerun",
-        "status": "completed",
-        "scope": "small real-VCDIFF fixture"
-      },
-      {
-        "name": "reject wrong Control original",
-        "status": "completed",
-        "scope": "small real-VCDIFF fixture"
-      },
-      {
-        "name": "optional Control alongside game apply",
-        "status": "completed",
-        "scope": "small real-VCDIFF fixture"
+        "label": "program1_final",
+        "source_sha256": "8cf1493aa4d526d4289ee61c4da310f59c5481327a84e71a348b80d4366fe2a1",
+        "lookups_tested": 12141,
+        "passed": true,
+        "failures": []
       }
     ]
-  }
+  },
+  "independent_clean_executable_rebuild": {
+    "status": "PASS",
+    "results": [
+      {
+        "version": "effective",
+        "writes": 163,
+        "sha256": "8e8313f91021b9c561d9c2130a20b92804807a09bde08647438dd4e70fe6ec4a",
+        "clean_rebuild_byte_identical": true
+      },
+      {
+        "version": "program1",
+        "writes": 164,
+        "sha256": "8cf1493aa4d526d4289ee61c4da310f59c5481327a84e71a348b80d4366fe2a1",
+        "clean_rebuild_byte_identical": true
+      }
+    ]
+  },
+  "feedback": [
+    {
+      "id": "FB-001-manual-crash",
+      "title": "설정의 설명서 메뉴 진입 시 튕김 및 수동 오역",
+      "status": "PASS_NOT_REPRODUCED_OWNER_ACCEPTED",
+      "scope": "Eden default web applet disabled: manual launch returned normally to settings. Actual manual page display not verified.",
+      "evidence": [
+        {
+          "path": "00_control/feedback/dcinside_234556/screen_03.jpg",
+          "sha256": "ceb1c11dcaef5c67f9ecaf572e43693e25cd95dfde185ad33dd8c874eecafa6c"
+        },
+        {
+          "path": "08_qa/feedback/fb-effective-r4-01/fb-effective-r4-01_0107.53s.png",
+          "sha256": "99d8671129e3958b4f1ef723baf1126c6f2299004e02a9e0ecdc4796e5444992"
+        },
+        {
+          "path": "08_qa/feedback/fb-effective-r4-01/fb-effective-r4-01_0143.97s.png",
+          "sha256": "97cd76779433e520b7b9e3f977f9b6547147c6b951ab3d5689f6c1c03f2d1fb3"
+        },
+        {
+          "path": "08_qa/feedback/fb-effective-r4-01/eden_log.txt",
+          "sha256": "2dfbae9cf02698db0aef6752c3341ab8f0cf51259962b09ac87af418b878e41b"
+        }
+      ]
+    },
+    {
+      "id": "FB-002-season2021-korean",
+      "title": "2021 시즌 한글 적용 및 글자 깨짐 해소",
+      "status": "PASS",
+      "scope": "Final program1 executable in direct 2021 entry fixture: update notice, reset notice, main menu displayed normally; final ARM64 glyph index/kind/cursor lookup 12141/12141 PASS.",
+      "evidence": [
+        {
+          "path": "00_control/feedback/dcinside_234556/screen_04.jpg",
+          "sha256": "c24d4ab5bcf405495c5075f67c7554f7d66ed62780c63c4c8203daddf3d030e4"
+        },
+        {
+          "path": "00_control/feedback/dcinside_234556/screen_05.jpg",
+          "sha256": "40e3084075909982f94bcb3853c3ff0a801f501af670d4340be396617c754cad"
+        },
+        {
+          "path": "00_control/feedback/dcinside_234556/screen_06.jpg",
+          "sha256": "f99911dd5c088057a80edafe8d146ad9a885be77c0bbf7e5070b3574581ddd99"
+        },
+        {
+          "path": "00_control/feedback/dcinside_234556/screen_07.jpg",
+          "sha256": "86a6a683523dce2d109bf9b8d01dd988550e5e2c63ab1df1b4cca0811af7b042"
+        },
+        {
+          "path": "00_control/feedback/dcinside_234556/screen_08.jpg",
+          "sha256": "c2b4e0fdbb5ca2e06f3fa90817f3a1d0a756c31fe2e7bc3fd4e5052b97277157"
+        },
+        {
+          "path": "00_control/feedback/dcinside_234556/screen_09.jpg",
+          "sha256": "070df3716e219773b967ffa8effb4a7cd2cd79994931bf11a163ed8f7f5b3f33"
+        },
+        {
+          "path": "00_control/feedback/dcinside_234556/screen_10.jpg",
+          "sha256": "1d7a96f69c1f224bafbf302ad61030f52230abb83797ba3efc1df396b2e250fc"
+        },
+        {
+          "path": "00_control/feedback/dcinside_234556/screen_11.jpg",
+          "sha256": "9fe66e68a56fccf4808305d06af11a0baa65d207b97cc6a12dc72f590f2c5e0f"
+        },
+        {
+          "path": "00_control/feedback/dcinside_234556/screen_12.jpg",
+          "sha256": "92526cc3674dac7c65fa86452d77b3baab6c412cc6ea1f7110efddc91fb8b844"
+        },
+        {
+          "path": "00_control/feedback/dcinside_234556/screen_13.jpg",
+          "sha256": "d9b72688754112f6132254cc5f95ce7dfc5d0a373ac7e3e3f134da6e5ed21618"
+        },
+        {
+          "path": "00_control/feedback/dcinside_234556/screen_14.jpg",
+          "sha256": "685a8a2519c9a48cd69cef884f936100fcfcbb089bd8ed1c55d42ea986e0e6e0"
+        },
+        {
+          "path": "00_control/feedback/dcinside_234556/screen_15.jpg",
+          "sha256": "cbe9df911bf0538a7b41e95bab8ff7418c617b602df699a505ccb177e47f1722"
+        },
+        {
+          "path": "00_control/feedback/dcinside_234556/screen_16.jpg",
+          "sha256": "c2f55ab4f661989efe565e8c5e55fd965c14525a510fafcf26ecbbe7dd6161a9"
+        },
+        {
+          "path": "00_control/feedback/dcinside_234556/screen_17.jpg",
+          "sha256": "9a511d7cb0fc8fc182f31fb3a0542768c2d07070aafff6688a9af02aad4ab487"
+        },
+        {
+          "path": "00_control/feedback/dcinside_234556/screen_18.jpg",
+          "sha256": "3318f21a6a1c25c96f2115ea9f65fdf7ba0dadf1a9b1f0cfaf658be56f9edff8"
+        },
+        {
+          "path": "00_control/feedback/dcinside_234556/screen_19.jpg",
+          "sha256": "8a477f548865f8d7601afc715605c9d20abcac735ffee7621ce5949f156061ea"
+        },
+        {
+          "path": "00_control/feedback/dcinside_234556/screen_20.jpg",
+          "sha256": "cc57d237adb286a4020bae7aaf1057c6d2f3b94647cb026b1535a2f95b85f485"
+        },
+        {
+          "path": "00_control/feedback/dcinside_234556/screen_21.jpg",
+          "sha256": "913c22f318c1f5e8a7bc25fc1d815478e2b9def1f8b19c7b857bd2fca612d775"
+        },
+        {
+          "path": "00_control/feedback/dcinside_234556/screen_22.jpg",
+          "sha256": "d8b9fdec4ddb3e6d72325eb96da5220069c2ae22361400fbae7d39d8ea33d5ab"
+        },
+        {
+          "path": "00_control/feedback/dcinside_234556/screen_23.jpg",
+          "sha256": "2ba690e8a3e957328794721d52c5934b5d4a5b7a084f27818c21aeec39e67543"
+        },
+        {
+          "path": "00_control/feedback/dcinside_234556/screen_24.jpg",
+          "sha256": "c67f73f3496be012011eed85c2624f46c0b1e085fb1854378f1270b0bd20c2a7"
+        },
+        {
+          "path": "00_control/feedback/dcinside_234556/screen_25.jpg",
+          "sha256": "6343d662986935399337a5a4ced20be83def6b6ce5980406f20bc67a12a8c12a"
+        },
+        {
+          "path": "00_control/feedback/dcinside_234556/screen_26.jpg",
+          "sha256": "290d0a09cab2886918cbb8549788dcb8494f28b455404895ff9fb4b521b0fa7f"
+        },
+        {
+          "path": "08_qa/feedback/fb-direct2021-final-01/fb-direct2021-final-01_0030.00s.png",
+          "sha256": "38e3f6bcb1c67f155748bf07e21bafcb9e704c48d9c3325276b93cb2f8421237"
+        },
+        {
+          "path": "08_qa/feedback/fb-direct2021-final-01/fb-direct2021-final-01_0125.99s.png",
+          "sha256": "ea10c0c8de5abe8dac254461dfc08dcd9cc93c469a59759d140d285c178f6116"
+        }
+      ]
+    },
+    {
+      "id": "FB-003-starplayer-crash",
+      "title": "스타플레이어 생성·기존 선수 시작 시 종료",
+      "status": "PASS_NOT_REPRODUCED_OWNER_ACCEPTED",
+      "scope": "Both new and existing player starts passed reported March 1 office scene into subsequent dialogue. New player also reached preseason game. No crash-specific code change.",
+      "evidence": [
+        {
+          "path": "00_control/feedback/dcinside_234599/screen_01.jpg",
+          "sha256": "b70955ff58224a57c8cb0d46fc0d5cf70a3ddf16a805d9be38372fd514a24d8d"
+        },
+        {
+          "path": "00_control/feedback/dcinside_234599/screen_03.jpg",
+          "sha256": "36f7738ac1590571f5fe4485bb6b034f815aebcdce4539faf1e49703f74ebf10"
+        },
+        {
+          "path": "08_qa/feedback/fb-star-r4-02/fb-star-r4-02_0992.78s.png",
+          "sha256": "7b3ac1741c5ab64206863f6b7d9d42905e08e15730dd57f839c147bbffe84c46"
+        },
+        {
+          "path": "08_qa/feedback/fb-star-r4-02/fb-star-r4-02_1243.36s.png",
+          "sha256": "e2f175de8fac1b04d571bf6fd5e1e8fa32c2bcd43f461fdc8c647996a1edadca"
+        },
+        {
+          "path": "08_qa/feedback/fb-star-existing-r4-01/fb-star-existing-r4-01_0416.97s.png",
+          "sha256": "57cca0e9980deb23e019c079042caf4da04de98fc40988e7344af3fd1a857073"
+        },
+        {
+          "path": "08_qa/feedback/fb-star-existing-r4-01/fb-star-existing-r4-01_0459.08s.png",
+          "sha256": "d2bcd6bf52bd851587f465be26be9022814f7ed859d91de90606067f8e1b16be"
+        }
+      ]
+    },
+    {
+      "id": "FB-004-age-career",
+      "title": "나이·프로 경력 단위 표기 오류",
+      "status": "PASS",
+      "scope": "See fixed scope and evidence",
+      "evidence": [
+        {
+          "path": "00_control/feedback/dcinside_234599/screen_02.jpg",
+          "sha256": "e5536508035bfc22c25f2b15e67845e3427f4ba8b994894a140db28e5dc3c5f8"
+        },
+        {
+          "path": "08_qa/feedback/fb-star-r4-02/fb-star-r4-02_0879.24s.png",
+          "sha256": "a3b12493dd1d7a93e1f7d09ef785f7e7fc5913932892cb975fe5a4cfc974b404"
+        },
+        {
+          "path": "08_qa/feedback/fb-star-existing-r4-01/fb-star-existing-r4-01_0308.88s.png",
+          "sha256": "aba47fdc07e669ad1868b4550b27a95399f520e775fd63f40774612ea169e297"
+        }
+      ]
+    },
+    {
+      "id": "FB-005-korea-roster",
+      "title": "도쿄 2020 한국 선수명 오류",
+      "status": "PASS",
+      "scope": "2021 Olympic Korea team lineup, bench, pitcher data and stat panel; 78 surname records per program read back, English names and other-country dictionary addends unchanged.",
+      "evidence": [
+        {
+          "path": "00_control/feedback/dcinside_234599/screen_04.jpg",
+          "sha256": "407c934757f350a51d83b441e31354a1493aee71a7432873841dcbbba8a44413"
+        },
+        {
+          "path": "00_control/feedback/dcinside_234599/screen_05.jpg",
+          "sha256": "8511b3946a67cb1d051bc9dafa597e41c4ca394c4b93f838b387c56c4f3eb2e4"
+        },
+        {
+          "path": "00_control/feedback/dcinside_234599/screen_06.jpg",
+          "sha256": "aa199fd5398fdac3d489f40779268aa702b81155e95d2233d5b8f7c77cf9d3b1"
+        },
+        {
+          "path": "00_control/feedback/dcinside_234599/screen_07.jpg",
+          "sha256": "0ef6a042ecb129b732572179faede7a476d70d10446fc9b8cc223ccc07ee95eb"
+        },
+        {
+          "path": "00_control/feedback/dcinside_234599/screen_08.jpg",
+          "sha256": "9b11c3b0eabe0ce372687c0ef0f579a11067b6d72efd4524187048b1011dee0f"
+        },
+        {
+          "path": "08_qa/feedback/fb-tokyo-final-04/fb-tokyo-final-04_0589.36s.png",
+          "sha256": "b533d0b832d0746610b873a4f6d73d945078a3b43b32a308d55219cc711b6386"
+        },
+        {
+          "path": "08_qa/feedback/fb-tokyo-final-04/fb-tokyo-final-04_0620.59s.png",
+          "sha256": "2491f92e7dda8fbc78e377a7f44852f6796100610b9bc2651b4ba3d8edbbdb71"
+        },
+        {
+          "path": "08_qa/feedback/fb-tokyo-final-04/fb-tokyo-final-04_0663.27s.png",
+          "sha256": "987781b456f809145e5df43eece852e9abe91bc70707f12dfc59928ce1cede97"
+        },
+        {
+          "path": "08_qa/feedback/fb-tokyo-final-04/fb-tokyo-final-04_0707.35s.png",
+          "sha256": "61a3889fe136ed3583d6243ccd3cbceaada765636a8b60d5782084f6ca3e7e04"
+        }
+      ]
+    }
+  ],
+  "runtime": [
+    {
+      "run_id": "fb-effective-r4-01",
+      "emulator": "Eden",
+      "version": "0.2.1",
+      "duration_seconds": 375.735,
+      "gameplay_guest_panic": false,
+      "shutdown_panic_after_frontend_force_stop": false,
+      "log_sha256": "2dfbae9cf02698db0aef6752c3341ab8f0cf51259962b09ac87af418b878e41b",
+      "result_sha256": "07a7989698f1be58020ee1f02ded490ca9197fe13a860d2a43491f5a1cfe8ddb",
+      "loaded_main": [
+        {
+          "path": "0100F88012E34000/exefs/main",
+          "sha256": "8e8313f91021b9c561d9c2130a20b92804807a09bde08647438dd4e70fe6ec4a"
+        },
+        {
+          "path": "0100F88012E34001/exefs/main",
+          "sha256": "8cf1493aa4d526d4289ee61c4da310f59c5481327a84e71a348b80d4366fe2a1"
+        }
+      ]
+    },
+    {
+      "run_id": "fb-star-r4-02",
+      "emulator": "Eden",
+      "version": "0.2.1",
+      "duration_seconds": 1280.687,
+      "gameplay_guest_panic": false,
+      "shutdown_panic_after_frontend_force_stop": false,
+      "log_sha256": "b75d69c685e46fff6346d2a7eaeb0c5032e37ca73ee42abdfad9443cf7d4474a",
+      "result_sha256": "89d83ced38a7edc73938bf0ac58f4363a0afe092a156e354eae05f816b9c38d4",
+      "loaded_main": [
+        {
+          "path": "0100F88012E34000/exefs/main",
+          "sha256": "8e8313f91021b9c561d9c2130a20b92804807a09bde08647438dd4e70fe6ec4a"
+        },
+        {
+          "path": "0100F88012E34001/exefs/main",
+          "sha256": "8cf1493aa4d526d4289ee61c4da310f59c5481327a84e71a348b80d4366fe2a1"
+        }
+      ]
+    },
+    {
+      "run_id": "fb-star-existing-r4-01",
+      "emulator": "Eden",
+      "version": "0.2.1",
+      "duration_seconds": 482.828,
+      "gameplay_guest_panic": false,
+      "shutdown_panic_after_frontend_force_stop": false,
+      "log_sha256": "73044054675ab3f8d663ef8c84fb2b0fcd3acb8bb925020486c241ca5def498d",
+      "result_sha256": "761e5512890cc665283c8bd1b80f673082b243eb6772ea12c251a22ce0084e79",
+      "loaded_main": [
+        {
+          "path": "0100F88012E34000/exefs/main",
+          "sha256": "8e8313f91021b9c561d9c2130a20b92804807a09bde08647438dd4e70fe6ec4a"
+        },
+        {
+          "path": "0100F88012E34001/exefs/main",
+          "sha256": "8cf1493aa4d526d4289ee61c4da310f59c5481327a84e71a348b80d4366fe2a1"
+        }
+      ]
+    },
+    {
+      "run_id": "fb-direct2021-final-01",
+      "emulator": "Eden",
+      "version": "0.2.1",
+      "duration_seconds": 400.0,
+      "gameplay_guest_panic": false,
+      "shutdown_panic_after_frontend_force_stop": true,
+      "log_sha256": "495a96320fa5455b75377617c0ed63397af926a9cee7380996da16713bfc8576",
+      "result_sha256": "d8fab39dceca08f24ea095f78472dddd186a04d562014c091364088a98bdaeeb",
+      "loaded_main": [
+        {
+          "path": "0100F88012E34000/exefs/main",
+          "sha256": "8cf1493aa4d526d4289ee61c4da310f59c5481327a84e71a348b80d4366fe2a1"
+        }
+      ]
+    },
+    {
+      "run_id": "fb-tokyo-final-04",
+      "emulator": "Eden",
+      "version": "0.2.1",
+      "duration_seconds": 900.015,
+      "gameplay_guest_panic": false,
+      "shutdown_panic_after_frontend_force_stop": false,
+      "log_sha256": "827d2016f6da8e9228ad241ca0279d89c01c48942f59c1663a77039978ffc49a",
+      "result_sha256": "d7648373011af147d815b4bec8d8bc1cd2d3f69501fe2d1055f312f7c3b7ce11",
+      "loaded_main": [
+        {
+          "path": "0100F88012E34000/exefs/main",
+          "sha256": "8cf1493aa4d526d4289ee61c4da310f59c5481327a84e71a348b80d4366fe2a1"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Manual web applet was disabled in emulator; real page display unverified.",
+    "Starplayer new and existing start scenarios passed; no long-season or save-reload claim.",
+    "2021 direct-entry fixture verifies target executable and shared RomFS; emulator program handoff not fully verified.",
+    "Korean generated surnames are corrected, not replaced with an official real-player roster.",
+    "Control/icon delta is unchanged from v0.92."
+  ]
 }

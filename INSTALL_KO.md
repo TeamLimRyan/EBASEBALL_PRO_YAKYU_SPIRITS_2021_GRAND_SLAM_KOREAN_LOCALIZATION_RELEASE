@@ -1,13 +1,13 @@
-# 프로야구 스피리츠 2021 한국어 패치 v0.92 상세 설치 매뉴얼
+# 프로야구 스피리츠 2021 한국어 패치 v0.93 상세 설치 매뉴얼
 
 대상은 Nintendo Switch 일본어판 **Base v0 + 업데이트 1.12.0 (v786432)**입니다.
 
-**게임용 `game.xdelta`는 NSP/XCI에 직접 적용하는 패치가 아닙니다.** 원본 게임에서 추출한 ExeFS·RomFS 폴더에 동봉한 `install.cmd` 명령으로 적용합니다. v0.92에는 별도 `program1/exefs/main` 원본이 필요 없습니다.
+**게임용 `game.xdelta`는 NSP/XCI에 직접 적용하는 패치가 아닙니다.** 원본 게임에서 추출한 ExeFS·RomFS 폴더에 동봉한 `install.cmd` 명령으로 적용합니다. v0.93에는 별도 `program1/exefs/main` 원본이 필요 없습니다.
 
 ## 1. 준비할 것
 
 - Windows x64 PC. Windows PowerShell과 패키지에 포함된 xdelta3를 사용합니다. Python 설치는 필요 없습니다.
-- `eBASEBALL_2021_Korean_v0.92_xdelta.zip` 전체. GitHub의 **Source code (zip)**은 설치 파일이 아닙니다.
+- `eBASEBALL_2021_Korean_v0.93_xdelta.zip` 전체. GitHub의 **Source code (zip)**은 설치 파일이 아닙니다.
 - 본인 소유 일본어판 게임에 **1.12.0 업데이트가 실제 적용된 상태**에서 추출한 원본 ExeFS와 RomFS.
 - 출력용 NTFS 드라이브와 여유 공간 16GB 이상. 원본·다운로드 ZIP·압축 해제 공간은 별도입니다.
 
@@ -24,12 +24,12 @@
 
 ## 2. 다운로드하고 압축 풀기
 
-1. v0.92 릴리스에서 `eBASEBALL_2021_Korean_v0.92_xdelta.zip`을 받습니다.
-2. ZIP 전체를 새 폴더에 풉니다. 예: `C:/SpiritsPatch/v0.92`.
+1. v0.93 릴리스에서 `eBASEBALL_2021_Korean_v0.93_xdelta.zip`을 받습니다.
+2. ZIP 전체를 새 폴더에 풉니다. 예: `C:/SpiritsPatch/v0.93`.
 3. 다음 파일이 있는 폴더를 엽니다. 압축을 풀 때 폴더가 한 겹 더 생겼다면 `install.cmd`가 실제로 있는 안쪽 폴더를 사용합니다.
 
 ```text
-v0.92/
+v0.93/
   install.cmd
   apply_patch.ps1
   manifest.json
@@ -93,14 +93,14 @@ D:/SpiritsOriginal/program0/romfs/cdvdroot/...
 
 세 구조 모두 `-Source "D:/SpiritsOriginal"`을 사용합니다. 폴더를 이중으로 넣었다면 `-Source`가 `exefs`·`romfs`, `effective`, `program0` 중 하나를 직접 찾을 수 있도록 위치를 조정하세요. 추출된 원본의 다른 파일이 함께 있어도 됩니다.
 
-**v0.92에는 `program1` 폴더가 필요 없습니다.** 설치기는 본편의 원본 `main` 하나를 입력으로 사용해 두 프로그램 각각의 다른 한글 `main`을 만듭니다. 입력용 `main`을 복제하거나 이름을 바꾸지 마세요.
+**v0.93에는 `program1` 폴더가 필요 없습니다.** 설치기는 본편의 원본 `main` 하나를 입력으로 사용해 두 프로그램 각각의 다른 한글 `main`을 만듭니다. 입력용 `main`을 복제하거나 이름을 바꾸지 마세요.
 
 ## 4. 패치 적용
 
 1. `install.cmd`가 있는 폴더에서 PowerShell을 엽니다. 또는 PowerShell에서 다음처럼 이동합니다.
 
 ```powershell
-Set-Location -LiteralPath 'C:/SpiritsPatch/v0.92'
+Set-Location -LiteralPath 'C:/SpiritsPatch/v0.93'
 ```
 
 2. 다음 명령에서 원본·출력 경로를 본인 환경에 맞게 바꿉니다.
@@ -116,7 +116,7 @@ Set-Location -LiteralPath 'C:/SpiritsPatch/v0.92'
 
 설치기는 원본·패치의 크기와 SHA-256을 확인하고, 임시 원본 스트림을 만든 뒤 xdelta를 적용합니다. 결과 파일마다 진행 줄이 표시됩니다. 대형 파일을 처리할 때는 다음 진행 줄까지 시간이 걸릴 수 있습니다.
 
-마지막에 **`PASS: all 42 game files match v0.9.`**가 포함된 메시지가 나오면 파일 생성이 완료된 것입니다. `v0.9`는 게임 내용의 기준 버전을 뜻하며, v0.92 패치가 잘못 실행됐다는 의미가 아닙니다. 출력 안의 `install_report.json`에는 배포 버전 `0.92`가 기록됩니다.
+마지막에 **`PASS: all 42 game files match v0.93.`**가 포함된 메시지가 나오면 파일 생성이 완료된 것입니다. 출력 안의 `install_report.json`에는 배포 버전 `0.93`가 기록됩니다.
 
 ## 5. 에뮬레이터에 설치
 
@@ -195,15 +195,15 @@ SpiritsKorean_Atmosphere_v092/
 
 원본 업데이트 NSP가 다른 덤프·재패키징 파일이면 버전 표시가 같아도 해시가 다를 수 있으며 설치기가 거부합니다. 해시 검사를 끄지 마세요. 게임용 모드 설치는 이 선택 단계를 생략하고 진행할 수 있습니다.
 
-기존 v0.9/v0.91의 제목·아이콘 차분과 같은 파일이므로 이미 설치한 경우 다시 적용할 필요가 없습니다.
+기존 v0.9/v0.91/v0.92의 제목·아이콘 차분과 같은 파일이므로 이미 설치한 경우 다시 적용할 필요가 없습니다.
 
 ## 8. 중단 후 재개와 기존 버전 교체
 
 - 설치 창을 닫았거나 작업이 중단됐다면 **같은 원본·출력 경로·옵션**으로 명령을 다시 실행합니다.
-- 출력 옆 `.SpiritsKorean_v092.v092-stage`는 임시 작업 폴더입니다. 재개할 때 사용할 수 있도록 그대로 둡니다.
+- 출력 옆의 `stage` 임시 작업 폴더는 재개할 때 사용할 수 있도록 그대로 둡니다.
 - 완료된 같은 출력 폴더로 재실행하면 기존 결과를 확인합니다.
-- v0.91에서 만든 출력·임시 폴더는 v0.92 설치를 이어가는 용도로 사용하지 않습니다. 새 `-Out` 경로를 선택합니다.
-- 게임 파일 결과는 기존 v0.9/v0.91 기준과 같습니다. 이미 정상 설치해서 사용 중인 경우 게임 내용이 새로 바뀌는 버전은 아닙니다.
+- v0.91에서 만든 출력·임시 폴더는 v0.93 설치를 이어가는 용도로 사용하지 않습니다. 새 `-Out` 경로를 선택합니다.
+- v0.93은 2021 글꼴, 설명서 메뉴 문구, 나이·경력 단위, 한국 선수 성씨를 수정합니다. v0.9/v0.91/v0.92 사용자는 작은 업데이트 ZIP으로 기존 한국어 설치 결과에서 새 출력 폴더를 만들 수도 있습니다. 자세한 명령은 README.md와 업데이트 ZIP의 README_KO.txt를 따르세요.
 - 새 모드를 적용할 때 이전 한국어 모드를 비활성화한 다음 이번 결과를 사용합니다. 세이브는 교체 대상이 아닙니다.
 
 ## 9. 오류 메시지별 확인 사항
@@ -213,8 +213,8 @@ SpiritsKorean_Atmosphere_v092/
 | `install.cmd`를 찾지 못함 | PowerShell이 `install.cmd`가 있는 폴더인지 확인하고 앞에 `./`를 붙입니다. |
 | `tools/xdelta3.exe` 또는 `patch/game.xdelta` 누락 | Source code ZIP이 아닌 설치 ZIP 전체를 새 폴더에 풉니다. 일부 파일만 옮기지 않습니다. |
 | `Original file missing or wrong version` | `-Source` 위치, ExeFS·RomFS 둘 다 있는지, 일본어판 1.12.0 원본인지 확인합니다. 아래 원본 표와 비교합니다. |
-| `program1/exefs/main` 원본을 요구함 | 구버전 v0.91 설치기를 실행 중일 수 있습니다. v0.92 ZIP을 새 폴더에 풀고 그 안의 명령을 사용합니다. |
-| `Unsupported package manifest` | 설치기와 manifest 버전이 섞였습니다. 전체 v0.92 ZIP을 다시 풉니다. |
+| `program1/exefs/main` 원본을 요구함 | 구버전 v0.91 설치기를 실행 중일 수 있습니다. v0.93 ZIP을 새 폴더에 풀고 그 안의 명령을 사용합니다. |
+| `Unsupported package manifest` | 설치기와 manifest 버전이 섞였습니다. 전체 v0.93 ZIP을 다시 풉니다. |
 | `Wrong file size or SHA-256` | 오류 경로가 패키지 내부인지 원본인지 확인합니다. 패키지라면 다운로드·압축 해제 상태를, 원본이라면 버전·추출 상태를 확인합니다. |
 | `Existing output belongs to another installation` | 다른 버전·원본·설치 방식의 출력입니다. 새 `-Out` 폴더를 선택합니다. |
 | `Source and output directories must not overlap` | 원본과 출력이 같거나 서로 포함됩니다. 별도의 형제 폴더처럼 겹치지 않는 경로를 선택합니다. |
@@ -251,7 +251,7 @@ D:/.SpiritsKorean_v092.v092-diagnostic.json
 
 ## 12. 지원 범위와 알려진 제한
 
-- 새 게임 xdelta를 만들었으며 목표 한글화 파일은 기존 기준본과 동일합니다. 작은 설치기 시험 14건은 통과했으나, v0.92의 실제 전체 설치·새 차분 왕복·업로드 후 재다운로드 시험은 실시하지 않았습니다.
+- 새 게임 xdelta와 기존 한국어 패치용 업데이트 차분을 만듭니다. 정확한 설치·왕복·배포 검증 결과는 동봉 verification.json 및 릴리스 검증 기록에 있습니다.
 - 별도 Nintendo 시스템 키보드를 사용하는 온라인 닉네임 경로는 추가 작업 대상입니다.
 - PC Eden 0.2.1의 2021 시즌 전환 종료는 일본어 원본에서도 재현된 기록이 있습니다. 이번 xdelta 재빌드가 에뮬레이터 문제를 해결한다는 의미는 아닙니다.
 - Eden 0.2.1 Windows에서 업데이트 NSP 설치 중 종료도 원본 업데이트에서 관측됐습니다. 기본 게임용 모드와 선택 제목·아이콘 NSP 설치를 구분합니다.
@@ -294,6 +294,6 @@ D:/.SpiritsKorean_v092.v092-diagnostic.json
 
 ## 다운로드 및 권리 안내
 
-[v0.92 릴리스](https://github.com/TeamLimRyan/EBASEBALL_PRO_YAKYU_SPIRITS_2021_GRAND_SLAM_KOREAN_LOCALIZATION_RELEASE/releases/tag/v0.92) · [설치 ZIP](https://github.com/TeamLimRyan/EBASEBALL_PRO_YAKYU_SPIRITS_2021_GRAND_SLAM_KOREAN_LOCALIZATION_RELEASE/releases/download/v0.92/eBASEBALL_2021_Korean_v0.92_xdelta.zip)
+[v0.93 릴리스](https://github.com/TeamLimRyan/EBASEBALL_PRO_YAKYU_SPIRITS_2021_GRAND_SLAM_KOREAN_LOCALIZATION_RELEASE/releases/tag/v0.93) · [설치 ZIP](https://github.com/TeamLimRyan/EBASEBALL_PRO_YAKYU_SPIRITS_2021_GRAND_SLAM_KOREAN_LOCALIZATION_RELEASE/releases/download/v0.93/eBASEBALL_2021_Korean_v0.93_xdelta.zip)
 
 비공식 팬 번역 패치이며 KONAMI 및 원작 권리자와 관계가 없습니다. 원본 게임·키·펌웨어·세이브는 포함하지 않습니다. 도구·글꼴 등의 라이선스는 설치 ZIP의 `LICENSES.txt`를 참고하세요.
