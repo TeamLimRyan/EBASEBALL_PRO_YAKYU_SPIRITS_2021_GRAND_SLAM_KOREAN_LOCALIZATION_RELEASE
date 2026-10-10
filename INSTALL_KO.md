@@ -1,3 +1,3 @@
 # 설치 안내
 
-v0.91 설치 방법은 [README](README.md#적용-방법)에 통합했습니다. 설치 ZIP은 [v0.91 릴리스](https://github.com/TeamLimRyan/EBASEBALL_PRO_YAKYU_SPIRITS_2021_GRAND_SLAM_KOREAN_LOCALIZATION_RELEASE/releases/tag/v0.91)에서 받으세요.
+v0.92는 기존과 같이 `install.cmd` 명령으로 적용합니다. 본편의 원본 ExeFS·RomFS 추출 폴더를 선택하세요. 별도 program1 원본은 필요 없습니다. [자세한 설치 안내](README.md#적용-방법)

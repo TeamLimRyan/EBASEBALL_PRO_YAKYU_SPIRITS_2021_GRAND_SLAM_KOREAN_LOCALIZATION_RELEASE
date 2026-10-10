@@ -1,12 +1,12 @@
-# 프로야구 스피리츠 2021 그랜드슬램 한국어 패치 v0.91
+# 프로야구 스피리츠 2021 그랜드슬램 한국어 패치 v0.92
 
-**[v0.91 설치 ZIP 다운로드](https://github.com/TeamLimRyan/EBASEBALL_PRO_YAKYU_SPIRITS_2021_GRAND_SLAM_KOREAN_LOCALIZATION_RELEASE/releases/download/v0.91/eBASEBALL_2021_Korean_v0.91_xdelta.zip)** · [릴리스 안내](https://github.com/TeamLimRyan/EBASEBALL_PRO_YAKYU_SPIRITS_2021_GRAND_SLAM_KOREAN_LOCALIZATION_RELEASE/releases/tag/v0.91)
+**[v0.92 설치 ZIP 다운로드](https://github.com/TeamLimRyan/EBASEBALL_PRO_YAKYU_SPIRITS_2021_GRAND_SLAM_KOREAN_LOCALIZATION_RELEASE/releases/download/v0.92/eBASEBALL_2021_Korean_v0.92_xdelta.zip)** · [릴리스 안내](https://github.com/TeamLimRyan/EBASEBALL_PRO_YAKYU_SPIRITS_2021_GRAND_SLAM_KOREAN_LOCALIZATION_RELEASE/releases/tag/v0.92)
 
 GitHub의 Source code ZIP은 설치 패키지가 아닙니다. 위 설치 ZIP 전체를 받아 주세요.
 
 Nintendo Switch 일본어판 **Base v0 + Update 1.12.0 (v786432)** 전용입니다.
 
-**게임용 xdelta 1개 + 제목·아이콘용 xdelta 1개**로 정리한 배포판입니다. 전체 패키지는 10파일이며 Python 설치가 필요 없습니다.
+**게임용 xdelta를 원본 추출 파일에서 새로 빌드한 v0.92**입니다. 별도 `program1/exefs/main` 입력을 없애 일반적인 본편 추출 폴더만으로 두 프로그램을 설치합니다. 게임용·제목 아이콘용 xdelta 2개, 전체 패키지 10파일이며 Python 설치가 필요 없습니다.
 게임 내용과 최종 결과는 v0.9와 같습니다. 이미 v0.9를 정상 설치했다면 재설치할 필요가 없습니다.
 
 ## 적용 방법
@@ -19,8 +19,10 @@ Nintendo Switch 일본어판 **Base v0 + Update 1.12.0 (v786432)** 전용입니�
 .\install.cmd -Source "D:\원본추출" -Out "C:\스피리츠_한국어"
 ```
 
+**NSP/XCI를 xdelta 패처에 직접 넣는 방식이 아닙니다.** 업데이트 1.12.0을 활성화한 상태에서 추출한 원본 ExeFS와 RomFS를 준비하세요. 한국어 모드를 끈 원본이어야 합니다.
+
 원본 폴더는 다음 구조입니다. `effective` 대신 `program0`을 쓰거나 `exefs`·`romfs`가 바로 아래에 있어도 인식합니다.
-두 번째 실행 파일은 `program1/exefs/main` 또는 `update/program1/exefs/main`에 두세요.
+**v0.92에는 `program1` 폴더가 필요 없습니다.**
 
 ```text
 원본추출/
@@ -30,10 +32,9 @@ Nintendo Switch 일본어판 **Base v0 + Update 1.12.0 (v786432)** 전용입니�
       RES00.RDI, RES00.RDB, RES11.RDB ~ RES18.RDB
       html_document/manual.htdocs/index.html
       html_document/manual.htdocs/img/pc_page_1.jpg ~ pc_page_9.jpg
-  program1/exefs/main
 ```
 
-두 `main`은 서로 다른 프로그램의 파일입니다. 같은 파일을 복사해서 채우면 안 됩니다.
+설치기는 본편 원본 `main` 하나로 두 프로그램의 서로 다른 한글 `main`을 복원하고 각각의 해시를 확인합니다.
 Base에 업데이트 파일을 단순 복사한 폴더나 이전 한국어 패치 결과물은 입력으로 쓸 수 없습니다.
 
 **PASS가 표시되면** 출력의 `0100F88012E34000/KoreanPatch`와 `0100F88012E34001/KoreanPatch`를
@@ -50,7 +51,7 @@ ZIP·압축 해제·사용자 원본 보관 공간은 별도입니다. **출력 
 기본 게임 한글화에는 업데이트 NSP가 필요하지 않습니다. 게임 목록의 제목·아이콘도 바꾸려면 다음 명령을 추가로 실행합니다.
 
 ```powershell
-.\install.cmd -ControlOnly -UpdateNsp "D:\원본_1.12.0_업데이트.nsp" -Out "C:\스피리츠_Control_v0.91.nsp"
+.\install.cmd -ControlOnly -UpdateNsp "D:\원본_1.12.0_업데이트.nsp" -Out "C:\스피리츠_Control_v0.92.nsp"
 ```
 
 PASS 후 생성된 NSP를 게임 업데이트로 설치하세요. 게임 본편 NSP가 아닌 **정확한 일본어판 v786432 업데이트 NSP**용입니다.
@@ -58,22 +59,22 @@ PASS 후 생성된 NSP를 게임 업데이트로 설치하세요. 게임 본편 
 
 ## 중단·오류·제거
 
-- 중단되면 같은 명령으로 다시 실행합니다. 출력 옆 `.출력폴더이름.v091-stage`의 검증된 파일을 재사용합니다.
+- 중단되면 같은 명령으로 다시 실행합니다. 출력 옆 `.출력폴더이름.v092-stage`의 검증된 파일을 재사용합니다.
 - 다른 파일이 들어 있는 출력 폴더와 원본 파일은 덮어쓰지 않습니다. 완료 폴더에 다시 실행하면 결과를 재검증합니다.
-- 오류 제보에는 버전·오류 문구와 `.출력폴더이름.v091-diagnostic.json`을 첨부하세요. 완료 기록은 출력의 `install_report.json`입니다.
+- 오류 제보에는 버전·오류 문구와 `.출력폴더이름.v092-diagnostic.json`을 첨부하세요. 완료 기록은 출력의 `install_report.json`입니다.
 - 제거할 때는 이번 한국어 모드만 비활성화하거나 제거합니다. 제목·아이콘은 원본 1.12.0 업데이트를 다시 설치하면 되돌릴 수 있습니다.
 - 게임 원본·세이브는 삭제하지 마세요. 기존 세이브는 적용 전에 별도로 백업하세요. 원본 게임·키·세이브를 오류 제보에 첨부하지 마세요.
 
 ## 패치 구성과 검증
 
-`patch/game.xdelta`는 원본 22파일을 정해진 순서로 이어 붙인 바이트 스트림에 적용합니다.
+`patch/game.xdelta`는 원본 21파일을 정해진 순서로 이어 붙인 바이트 스트림에 적용합니다. 본편 `main`은 두 프로그램 출력에 대응하도록 스트림에서 두 번 사용합니다.
 설치기가 결합·xdelta 적용·결과 분리를 자동 처리하며, 게임 데이터를 다시 압축하거나 내부 자원을 재조립하지 않습니다.
 **game.xdelta를 NSP/XCI 또는 개별 RDB 하나에 직접 적용하면 안 됩니다.**
-각 입력·출력의 순서, 크기, SHA-256은 `manifest.json`에 있습니다. 복원 결과 42개 경로가 v0.9와 일치하는지 확인합니다.
+각 입력·출력의 순서, 크기, SHA-256은 `manifest.json`에 있습니다. 설치기는 복원 결과 42개 경로가 v0.9의 기준 해시와 일치하는지 확인합니다.
 
-v0.91은 배포 형식과 설치기 검증입니다. 새로운 게임 내용 수정이나 장시간 플레이 검증을 뜻하지 않습니다.
+v0.92는 xdelta 재빌드와 설치 입력 개선, 설치기 검증입니다. 새로운 게임 내용 수정이나 장시간 플레이 검증을 뜻하지 않습니다.
 제목·아이콘 차분은 v0.9의 검증 기록을 계승하고 기존 배포 차분과의 SHA-256 일치를 확인했습니다.
-체크섬은 `checksums.sha256`, 검증 기록은 `verification.json`에 있습니다.
+체크섬은 `checksums.sha256`, 빌드·시험 범위는 `verification.json`에 있습니다. 이번 v0.92의 새 차분 왕복·실제 전체 설치 시험과 업로드 후 재다운로드는 실시하지 않았습니다. 기존 기준 출력 해시와 설치기의 출력 검사는 유지합니다.
 
 ## 알려진 제한
 

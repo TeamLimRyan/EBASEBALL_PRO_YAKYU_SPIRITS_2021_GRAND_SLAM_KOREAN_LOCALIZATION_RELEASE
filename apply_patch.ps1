@@ -116,7 +116,7 @@ try {
     $env:XDELTA = $null
     $manifestPath = Join-Path $PSScriptRoot 'manifest.json'
     $m = Get-Content -LiteralPath $manifestPath -Raw -Encoding UTF8 | ConvertFrom-Json
-    if ($m.version -ne '0.91' -or $m.schema -ne 2) { throw 'Unsupported package manifest' }
+    if ($m.version -ne '0.92' -or $m.schema -ne 2) { throw 'Unsupported package manifest' }
     $exe = Safe-Path $PSScriptRoot $m.tool.path
     Assert-File $exe $m.tool
     if ($ControlOnly) {
@@ -133,11 +133,11 @@ try {
     $leaf = [IO.Path]::GetFileName($destination)
     New-Item -ItemType Directory -Force -Path $parent | Out-Null
     $destination = Safe-Path $parent $leaf
-    $stage = Safe-Path $parent ('.' + $leaf + '.v091-stage')
-    $diagnostic = Safe-Path $parent ('.' + $leaf + '.v091-diagnostic.json')
-    $lockPath = Safe-Path $parent ('.' + $leaf + '.v091-lock')
+    $stage = Safe-Path $parent ('.' + $leaf + '.v092-stage')
+    $diagnostic = Safe-Path $parent ('.' + $leaf + '.v092-diagnostic.json')
+    $lockPath = Safe-Path $parent ('.' + $leaf + '.v092-lock')
     $lock = [IO.File]::Open($lockPath, [IO.FileMode]::OpenOrCreate, [IO.FileAccess]::ReadWrite, [IO.FileShare]::None)
-    $marker = [ordered]@{ package_sha256=$packageHash; layout=$Layout; source=$sourceRoot; version='0.91' }
+    $marker = [ordered]@{ package_sha256=$packageHash; layout=$Layout; source=$sourceRoot; version='0.92' }
     if (Test-Path -LiteralPath $destination) {
         $priorMarker = Join-Path $destination 'package-id.json'
         if (!(Test-Path -LiteralPath $priorMarker -PathType Leaf)) { throw 'Output folder already exists and is not this installer output. Choose another -Out path.' }
@@ -221,7 +221,7 @@ try {
             }
             $offset += $row.output.size
             $completed++
-            Save-JSON $diagnostic ([ordered]@{ result='RUNNING'; version='0.91'; completed=$completed; total=@($m.files).Count; item=$row.source })
+            Save-JSON $diagnostic ([ordered]@{ result='RUNNING'; version='0.92'; completed=$completed; total=@($m.files).Count; item=$row.source })
             Write-Host "[$completed/$(@($m.files).Count)] verified $($row.source)"
         }
         if ($decoded.ReadByte() -ne -1) { throw 'Unexpected extra xdelta output' }
@@ -235,13 +235,13 @@ try {
     foreach ($target in $m.targets) { Assert-File (Target-Path $stage $target.path) $target }
     if ($UpdateNsp) { Invoke-Control $UpdateNsp (Join-Path $stage $m.control.target_name) $m }
     Remove-Item -LiteralPath $sourceBundle
-    $report = [ordered]@{ result='PASS'; version='0.91'; content_version='0.9'; package_sha256=$packageHash; layout=$Layout; verified_files=@($m.targets).Count; exact_published_v09_output=$true; files=$m.targets; powershell=$PSVersionTable.PSVersion.ToString() }
+    $report = [ordered]@{ result='PASS'; version='0.92'; content_version='0.9'; package_sha256=$packageHash; layout=$Layout; verified_files=@($m.targets).Count; exact_published_v09_output=$true; files=$m.targets; powershell=$PSVersionTable.PSVersion.ToString() }
     Save-JSON (Join-Path $stage 'install_report.json') $report
     [IO.Directory]::Move($stage, $destination)
     Save-JSON $diagnostic $report
     Write-Host "PASS: all $(@($m.targets).Count) game files match v0.9. Output: $destination"
 } catch {
-    if ($diagnostic) { Save-JSON $diagnostic ([ordered]@{ result='FAILED'; version='0.91'; completed=$completed; error=$_.Exception.Message }) }
+    if ($diagnostic) { Save-JSON $diagnostic ([ordered]@{ result='FAILED'; version='0.92'; completed=$completed; error=$_.Exception.Message }) }
     Write-Error -ErrorAction Continue $_
     if ($stage) { Write-Host "Incomplete files are kept for resume: $stage" }
     exit 1

@@ -1,6 +1,6 @@
 {
   "schema": 2,
-  "version": "0.91",
+  "version": "0.92",
   "content_version": "0.9",
   "game_version": "1.12.0",
   "title_ids": [
@@ -15,8 +15,8 @@
   "bundle": {
     "format": "ordered raw byte concatenation; no compression or game data rebuild",
     "source": {
-      "size": 6019786249,
-      "sha256": "b74823cd5d9421d6322b48bc80a5fc763d4ca69ede46590157c9ff52b37aed60"
+      "size": 6020040713,
+      "sha256": "0ed8e7edd46f5318ac83bc91b0d312096cd1b91fd25f751f1e4f8520f89928e2"
     },
     "output": {
       "size": 6884780758,
@@ -24,8 +24,8 @@
     },
     "patch": {
       "path": "patch/game.xdelta",
-      "size": 2135401507,
-      "sha256": "5a0e2b21f6450507c022d0b399188b3584d13be209d020e1da0a2918e87d99cf"
+      "size": 1341910272,
+      "sha256": "e0332485a38ad33a700bb3a485aed5ee53b98ad819789715fdbdc0910401fc55"
     }
   },
   "files": [
@@ -386,10 +386,10 @@
       "target_offset": 6862977522
     },
     {
-      "source": "program1/exefs/main",
+      "source": "effective/exefs/main",
       "input": {
-        "size": 21731213,
-        "sha256": "d650022bb474b8bea936d49636c53c22796a6f3e26cc2cd1b1a1a577c062558b"
+        "size": 21985677,
+        "sha256": "dbf86017d51b7cff69dca33ea05a93f290cce031ab01e19899a74c3bc05ca809"
       },
       "output": {
         "size": 21801741,
@@ -628,7 +628,8 @@
       "size": 203999,
       "sha256": "cfdd74b06798f00228cfcfd34db8f656393e32d175158d94c4000a1462cf18bb"
     },
-    "target_name": "eBASEBALL_2021_v1.12.0_Korean_Control_v0.91.nsp",
+    "target_name": "eBASEBALL_2021_v1.12.0_Korean_Control_v0.92.nsp",
     "verification": "Unchanged v0.9 published direct delta. Prior roundtrip PASS reused; new NSP decode not repeated."
-  }
+  },
+  "installation_change": "Program1 original main is no longer required; both approved executables are rebuilt from the program0 dump."
 }
