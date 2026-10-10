@@ -1,11 +1,94 @@
-# 프로야구 스피리츠 2021 그랜드슬램 한국어 패치 v0.9
+# 프로야구 스피리츠 2021 그랜드슬램 한국어 패치 v0.91
 
-Nintendo Switch 일본어판 **Base v0 + Update v786432 (1.12.0)**용 비공식 한국어 패치입니다.
+**[v0.91 설치 ZIP 다운로드](https://github.com/TeamLimRyan/EBASEBALL_PRO_YAKYU_SPIRITS_2021_GRAND_SLAM_KOREAN_LOCALIZATION_RELEASE/releases/download/v0.91/eBASEBALL_2021_Korean_v0.91_xdelta.zip)** · [릴리스 안내](https://github.com/TeamLimRyan/EBASEBALL_PRO_YAKYU_SPIRITS_2021_GRAND_SLAM_KOREAN_LOCALIZATION_RELEASE/releases/tag/v0.91)
 
-**[v0.9 다운로드](https://github.com/TeamLimRyan/EBASEBALL_PRO_YAKYU_SPIRITS_2021_GRAND_SLAM_KOREAN_LOCALIZATION_RELEASE/releases/tag/v0.9)의 `eBASEBALL_2021_Korean_v0.9.zip` 전체를 받아 새 폴더에 풀어 주세요.** GitHub가 자동 생성하는 Source code ZIP은 설치 패키지가 아닙니다.
+GitHub의 Source code ZIP은 설치 패키지가 아닙니다. 위 설치 ZIP 전체를 받아 주세요.
 
-게임 본문·메뉴·도움말과 승인된 이미지, 게임 공통 한글 조합 자판, 한국어 게임 아이콘을 포함합니다. 감독 작전력·멤버 보너스의 동적 문구와 한글 줄바꿈, 기록 화면 간격, ‘볼’ 글꼴을 수정했습니다. 의뢰자의 장치 검증 완료 보고를 반영한 v0.9입니다.
+Nintendo Switch 일본어판 **Base v0 + Update 1.12.0 (v786432)** 전용입니다.
 
-설치는 [INSTALL_KO.md](INSTALL_KO.md), 검증 범위와 남은 제한은 [KNOWN_ISSUES.md](KNOWN_ISSUES.md)를 확인하세요.
+**게임용 xdelta 1개 + 제목·아이콘용 xdelta 1개**로 정리한 배포판입니다. 전체 패키지는 10파일이며 Python 설치가 필요 없습니다.
+게임 내용과 최종 결과는 v0.9와 같습니다. 이미 v0.9를 정상 설치했다면 재설치할 필요가 없습니다.
 
-원본 게임·키·펌웨어·세이브는 포함하지 않습니다. 본인 소유 원본이 반드시 필요하며 다른 버전이나 이미 수정한 파일에는 적용되지 않습니다.
+## 적용 방법
+
+1. ZIP 전체를 새 폴더에 풉니다.
+2. 본인 소유 게임에서 **1.12.0 업데이트를 적용해 추출한 원본**을 준비합니다.
+3. 압축을 푼 폴더에서 PowerShell을 열고 실행합니다.
+
+```powershell
+.\install.cmd -Source "D:\원본추출" -Out "C:\스피리츠_한국어"
+```
+
+원본 폴더는 다음 구조입니다. `effective` 대신 `program0`을 쓰거나 `exefs`·`romfs`가 바로 아래에 있어도 인식합니다.
+두 번째 실행 파일은 `program1/exefs/main` 또는 `update/program1/exefs/main`에 두세요.
+
+```text
+원본추출/
+  effective/
+    exefs/main
+    romfs/cdvdroot/
+      RES00.RDI, RES00.RDB, RES11.RDB ~ RES18.RDB
+      html_document/manual.htdocs/index.html
+      html_document/manual.htdocs/img/pc_page_1.jpg ~ pc_page_9.jpg
+  program1/exefs/main
+```
+
+두 `main`은 서로 다른 프로그램의 파일입니다. 같은 파일을 복사해서 채우면 안 됩니다.
+Base에 업데이트 파일을 단순 복사한 폴더나 이전 한국어 패치 결과물은 입력으로 쓸 수 없습니다.
+
+**PASS가 표시되면** 출력의 `0100F88012E34000/KoreanPatch`와 `0100F88012E34001/KoreanPatch`를
+각각 해당 title ID의 에뮬레이터 모드 폴더에 복사합니다. 두 프로그램을 모두 설치하고 기존 한국어 모드와 중복 적용하지 마세요.
+
+Atmosphère용으로 만들려면 명령 끝에 `-Layout atmosphere`를 붙이고, 출력의 `atmosphere` 폴더를 SD 카드 루트에 복사합니다.
+
+출력 드라이브는 **NTFS와 여유 공간 16GB 이상**을 권장합니다. 설치 중 임시 원본 묶음을 만들고 완료 시 지우며, 최종 모드는 약 7GB입니다.
+하드링크를 지원하지 않는 드라이브에서는 설치 중 24GB 이상의 여유 공간과 최종 모드 약 14GB가 필요합니다.
+ZIP·압축 해제·사용자 원본 보관 공간은 별도입니다. **출력 RDB 한 개가 4GB를 넘으므로 FAT32에는 저장할 수 없습니다.**
+
+## 제목·아이콘도 바꾸려면 (선택)
+
+기본 게임 한글화에는 업데이트 NSP가 필요하지 않습니다. 게임 목록의 제목·아이콘도 바꾸려면 다음 명령을 추가로 실행합니다.
+
+```powershell
+.\install.cmd -ControlOnly -UpdateNsp "D:\원본_1.12.0_업데이트.nsp" -Out "C:\스피리츠_Control_v0.91.nsp"
+```
+
+PASS 후 생성된 NSP를 게임 업데이트로 설치하세요. 게임 본편 NSP가 아닌 **정확한 일본어판 v786432 업데이트 NSP**용입니다.
+이 차분과 결과는 v0.9와 같으므로 이미 적용했다면 다시 적용할 필요가 없습니다.
+
+## 중단·오류·제거
+
+- 중단되면 같은 명령으로 다시 실행합니다. 출력 옆 `.출력폴더이름.v091-stage`의 검증된 파일을 재사용합니다.
+- 다른 파일이 들어 있는 출력 폴더와 원본 파일은 덮어쓰지 않습니다. 완료 폴더에 다시 실행하면 결과를 재검증합니다.
+- 오류 제보에는 버전·오류 문구와 `.출력폴더이름.v091-diagnostic.json`을 첨부하세요. 완료 기록은 출력의 `install_report.json`입니다.
+- 제거할 때는 이번 한국어 모드만 비활성화하거나 제거합니다. 제목·아이콘은 원본 1.12.0 업데이트를 다시 설치하면 되돌릴 수 있습니다.
+- 게임 원본·세이브는 삭제하지 마세요. 기존 세이브는 적용 전에 별도로 백업하세요. 원본 게임·키·세이브를 오류 제보에 첨부하지 마세요.
+
+## 패치 구성과 검증
+
+`patch/game.xdelta`는 원본 22파일을 정해진 순서로 이어 붙인 바이트 스트림에 적용합니다.
+설치기가 결합·xdelta 적용·결과 분리를 자동 처리하며, 게임 데이터를 다시 압축하거나 내부 자원을 재조립하지 않습니다.
+**game.xdelta를 NSP/XCI 또는 개별 RDB 하나에 직접 적용하면 안 됩니다.**
+각 입력·출력의 순서, 크기, SHA-256은 `manifest.json`에 있습니다. 복원 결과 42개 경로가 v0.9와 일치하는지 확인합니다.
+
+v0.91은 배포 형식과 설치기 검증입니다. 새로운 게임 내용 수정이나 장시간 플레이 검증을 뜻하지 않습니다.
+제목·아이콘 차분은 v0.9의 검증 기록을 계승하고 기존 배포 차분과의 SHA-256 일치를 확인했습니다.
+체크섬은 `checksums.sha256`, 검증 기록은 `verification.json`에 있습니다.
+
+## 알려진 제한
+
+- 공통 게임 자판의 한글 조합·삭제·확정과 현대 한글 11,172자를 지원합니다. 별도 Nintendo 시스템 키보드를 사용하는 온라인 닉네임 경로는 추가 작업 대상입니다.
+- PC Eden 0.2.1의 2021 시즌 전환 종료 현상은 일본어 원본에서도 재현됐습니다. 두 프로그램의 정적 패치는 포함하며, 해당 에뮬레이터 문제 해결을 주장하지 않습니다.
+- Eden 0.2.1 Windows의 업데이트 NSP 설치 중 종료도 원본 업데이트에서 관측됐습니다. 게임 한글화 모드와 선택 제목·아이콘 설치는 구분하세요.
+- 기존 일본어 세이브의 일부 사용자 지정 한자 이름은 다르게 표시될 수 있습니다. 백업 후 새 이름을 게임 안에서 입력하세요.
+- 동영상 2개·의성어 효과 이미지 611개와 검수에서 원본 유지로 결정한 이미지는 원본을 유지합니다.
+- 모든 경기·육성 이벤트의 장시간 전수 플레이를 완료한 것은 아닙니다. 기존 사용자 장치 검증, 대표 메뉴·한글 입력 확인과 파일 검증을 구분합니다.
+
+## 권리와 라이선스
+
+비공식 팬 번역 패치이며 KONAMI 및 원작 권리자와 관계가 없습니다. 원본 게임·키·펌웨어·세이브를 포함하지 않습니다.
+원작 게임·구단·선수·상표의 권리는 각 권리자에게 있습니다. 차분의 재판매 및 게임 원본과 묶은 배포를 허용하지 않습니다.
+
+Windows x64용 xdelta3 3.2.2는 기존 v0.9와 같은 실행 파일입니다.
+공식 배포: https://github.com/jmacd/xdelta/releases/tag/v3.2.2
+xdelta3·종속 라이브러리·Noto Sans KR 글꼴의 라이선스와 관련 고지는 `LICENSES.txt`에 모았습니다.

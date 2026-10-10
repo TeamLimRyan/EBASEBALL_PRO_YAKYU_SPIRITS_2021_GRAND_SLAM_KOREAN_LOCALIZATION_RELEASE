@@ -1,0 +1,612 @@
+{
+  "version": "0.91",
+  "result": "PASS",
+  "game_bundle": {
+    "result": "PASS",
+    "version": "0.91",
+    "game_xdelta_files": 1,
+    "optional_xdelta_files": 1,
+    "unique_game_files": 22,
+    "installed_game_files": 42,
+    "exact_v09_target_hashes": true,
+    "source_bundle": {
+      "size": 6019786249,
+      "sha256": "b74823cd5d9421d6322b48bc80a5fc763d4ca69ede46590157c9ff52b37aed60"
+    },
+    "target_bundle": {
+      "size": 6884780758,
+      "sha256": "fcb58d340275f3d3aebfb2da8cdb9b2c9a0a341f2fdaabbda568c00921ad0c6a"
+    },
+    "game_delta": {
+      "size": 2135401507,
+      "sha256": "5a0e2b21f6450507c022d0b399188b3584d13be209d020e1da0a2918e87d99cf"
+    },
+    "decoded_file_slices": [
+      {
+        "name": "effective/exefs/main",
+        "status": "completed",
+        "output": {
+          "size": 22059000,
+          "sha256": "53eec3296cc7c4cd3ec349a5ad0da491a50e61456748e25f79a7ed9d32f12f29"
+        }
+      },
+      {
+        "name": "effective/romfs/cdvdroot/RES00.RDB",
+        "status": "completed",
+        "output": {
+          "size": 5149666816,
+          "sha256": "ee5623ade29e3e2bc9895acb3722f84f540837814f58490df46c13ad078d3025"
+        }
+      },
+      {
+        "name": "effective/romfs/cdvdroot/RES00.RDI",
+        "status": "completed",
+        "output": {
+          "size": 256000,
+          "sha256": "d1fc1df34b6af870867aa7ff5ba84e830ed664b4146880f8eb9071e8c365df20"
+        }
+      },
+      {
+        "name": "effective/romfs/cdvdroot/RES11.RDB",
+        "status": "completed",
+        "output": {
+          "size": 415366656,
+          "sha256": "d7e82be79824a3f401929865152f523c1373232c658c9a0e447b6796a0a5cc8d"
+        }
+      },
+      {
+        "name": "effective/romfs/cdvdroot/RES12.RDB",
+        "status": "completed",
+        "output": {
+          "size": 65454592,
+          "sha256": "c51dba29b53ff462563f18a00e21dc801a7b669933abba7bf3b06dc9ba78f60e"
+        }
+      },
+      {
+        "name": "effective/romfs/cdvdroot/RES13.RDB",
+        "status": "completed",
+        "output": {
+          "size": 106497024,
+          "sha256": "a4759ea03a652f9f2ba20462e9893acd3c04f3a640d7e30564164734f051aa9f"
+        }
+      },
+      {
+        "name": "effective/romfs/cdvdroot/RES14.RDB",
+        "status": "completed",
+        "output": {
+          "size": 34548224,
+          "sha256": "2523d2d33fa6a7dddd77717c14523486ffaf9c442ed945a95e2b56996bd91a67"
+        }
+      },
+      {
+        "name": "effective/romfs/cdvdroot/RES15.RDB",
+        "status": "completed",
+        "output": {
+          "size": 50166784,
+          "sha256": "c559da852a9dc68d22c6a81e20591c8435d5c211cda25d146e37e192e9a6d994"
+        }
+      },
+      {
+        "name": "effective/romfs/cdvdroot/RES16.RDB",
+        "status": "completed",
+        "output": {
+          "size": 72803840,
+          "sha256": "af4ae097dbae36a5de1f692a24a153d6338a3c4d6f5c90ec15316dff50541b8e"
+        }
+      },
+      {
+        "name": "effective/romfs/cdvdroot/RES17.RDB",
+        "status": "completed",
+        "output": {
+          "size": 812658688,
+          "sha256": "d3de0328fccda5fb48086af8bef68fe16b468924896adc9fb3bd33b5f14a07f4"
+        }
+      },
+      {
+        "name": "effective/romfs/cdvdroot/RES18.RDB",
+        "status": "completed",
+        "output": {
+          "size": 125265408,
+          "sha256": "cdcbb6a6c0e787ecb65246fb93a2a6dc192affeb4b173783e5b550a1f2904ca2"
+        }
+      },
+      {
+        "name": "effective/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_1.jpg",
+        "status": "completed",
+        "output": {
+          "size": 341470,
+          "sha256": "50434d508174e9350ccdf045dc1a96ce0043c5b1cfce2cad7addb1a11160d90a"
+        }
+      },
+      {
+        "name": "effective/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_2.jpg",
+        "status": "completed",
+        "output": {
+          "size": 979767,
+          "sha256": "eca63268253a47d90a732f0f9bfa201f578a7ddac51f9b543d5146af50ad3cba"
+        }
+      },
+      {
+        "name": "effective/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_3.jpg",
+        "status": "completed",
+        "output": {
+          "size": 1063966,
+          "sha256": "dab04fac58f0d1788be19e2798a6eb4f44a3817d787322187f946e1d74ae90c3"
+        }
+      },
+      {
+        "name": "effective/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_4.jpg",
+        "status": "completed",
+        "output": {
+          "size": 917405,
+          "sha256": "4fa791fa67ba9c56d85932b32d4fb701d3e772ffa5fe5eb0b93945f282c58c67"
+        }
+      },
+      {
+        "name": "effective/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_5.jpg",
+        "status": "completed",
+        "output": {
+          "size": 931917,
+          "sha256": "ef47eea2c30e5733b36d4efdc1a86268648dbafb6013ebbb7e406f2301bcfbc9"
+        }
+      },
+      {
+        "name": "effective/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_6.jpg",
+        "status": "completed",
+        "output": {
+          "size": 1170107,
+          "sha256": "b9e69e4588ff1c0962bf4acddbb29bb73cf66ad2a38dca7ea35129b15d0ae495"
+        }
+      },
+      {
+        "name": "effective/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_7.jpg",
+        "status": "completed",
+        "output": {
+          "size": 1021097,
+          "sha256": "d0391abfa563c04e71ed6dc2cb46c40e35802057525e88e312fc4f725ff666d5"
+        }
+      },
+      {
+        "name": "effective/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_8.jpg",
+        "status": "completed",
+        "output": {
+          "size": 1216723,
+          "sha256": "5533169186008f1468b9421e0d122bce126b38f19b0257700d099bd4e47bb46b"
+        }
+      },
+      {
+        "name": "effective/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_9.jpg",
+        "status": "completed",
+        "output": {
+          "size": 592038,
+          "sha256": "f75bbc63e87b36db50109a73332910edc668a57c5b0318fc99279cefd3e0f7c2"
+        }
+      },
+      {
+        "name": "effective/romfs/cdvdroot/html_document/manual.htdocs/index.html",
+        "status": "completed",
+        "output": {
+          "size": 1495,
+          "sha256": "8d10c381d7ded24747135cfcdbd5429c5c6e5aed30f6572b23dd68e0a53dee80"
+        }
+      },
+      {
+        "name": "program1/exefs/main",
+        "status": "completed",
+        "output": {
+          "size": 21801741,
+          "sha256": "bb245122b4c448484af9b902c902ee60b13a87c50cf56780ac365c1de86af46a"
+        }
+      }
+    ],
+    "optional_control": "Unchanged v0.9 published direct delta. Prior roundtrip PASS reused; new NSP decode not repeated."
+  },
+  "windows_install": {
+    "result": "PASS",
+    "version": "0.91",
+    "verified_files": 42,
+    "unique_files": 22,
+    "package_file_count": 10,
+    "xdelta_files": 2,
+    "game_xdelta_files": 1,
+    "layout": "eden",
+    "powershell": "5.1.26100.9444",
+    "entrypoint": "install.cmd",
+    "unicode_and_spaces_in_output_path": true,
+    "exact_published_v09_output": true,
+    "inputs_unchanged": true,
+    "game_runtime": "Unchanged v0.9 content; existing v0.9 runtime scope inherited. No new runtime test.",
+    "optional_control": "Unchanged v0.9 delta hash verified; new actual NSP decode not repeated. Installer flow verified with fixture.",
+    "other_layout": "Atmosphere path generation tested with fixture; actual game bytes identical across layouts.",
+    "script": {
+      "size": 14289,
+      "sha256": "e3219c589ceca40e3d61b9c2eb9cba596916add43ae499d0745392ea5051bc23"
+    },
+    "manifest": {
+      "size": 23248,
+      "sha256": "e78a189167163bb2f2334b89e991aea069b97ebfc81e1a88a1c66d8978a0a0d7"
+    },
+    "files": [
+      {
+        "path": "0100F88012E34000/exefs/main",
+        "size": 22059000,
+        "sha256": "53eec3296cc7c4cd3ec349a5ad0da491a50e61456748e25f79a7ed9d32f12f29"
+      },
+      {
+        "path": "0100F88012E34000/romfs/cdvdroot/RES00.RDB",
+        "size": 5149666816,
+        "sha256": "ee5623ade29e3e2bc9895acb3722f84f540837814f58490df46c13ad078d3025"
+      },
+      {
+        "path": "0100F88012E34000/romfs/cdvdroot/RES00.RDI",
+        "size": 256000,
+        "sha256": "d1fc1df34b6af870867aa7ff5ba84e830ed664b4146880f8eb9071e8c365df20"
+      },
+      {
+        "path": "0100F88012E34000/romfs/cdvdroot/RES11.RDB",
+        "size": 415366656,
+        "sha256": "d7e82be79824a3f401929865152f523c1373232c658c9a0e447b6796a0a5cc8d"
+      },
+      {
+        "path": "0100F88012E34000/romfs/cdvdroot/RES12.RDB",
+        "size": 65454592,
+        "sha256": "c51dba29b53ff462563f18a00e21dc801a7b669933abba7bf3b06dc9ba78f60e"
+      },
+      {
+        "path": "0100F88012E34000/romfs/cdvdroot/RES13.RDB",
+        "size": 106497024,
+        "sha256": "a4759ea03a652f9f2ba20462e9893acd3c04f3a640d7e30564164734f051aa9f"
+      },
+      {
+        "path": "0100F88012E34000/romfs/cdvdroot/RES14.RDB",
+        "size": 34548224,
+        "sha256": "2523d2d33fa6a7dddd77717c14523486ffaf9c442ed945a95e2b56996bd91a67"
+      },
+      {
+        "path": "0100F88012E34000/romfs/cdvdroot/RES15.RDB",
+        "size": 50166784,
+        "sha256": "c559da852a9dc68d22c6a81e20591c8435d5c211cda25d146e37e192e9a6d994"
+      },
+      {
+        "path": "0100F88012E34000/romfs/cdvdroot/RES16.RDB",
+        "size": 72803840,
+        "sha256": "af4ae097dbae36a5de1f692a24a153d6338a3c4d6f5c90ec15316dff50541b8e"
+      },
+      {
+        "path": "0100F88012E34000/romfs/cdvdroot/RES17.RDB",
+        "size": 812658688,
+        "sha256": "d3de0328fccda5fb48086af8bef68fe16b468924896adc9fb3bd33b5f14a07f4"
+      },
+      {
+        "path": "0100F88012E34000/romfs/cdvdroot/RES18.RDB",
+        "size": 125265408,
+        "sha256": "cdcbb6a6c0e787ecb65246fb93a2a6dc192affeb4b173783e5b550a1f2904ca2"
+      },
+      {
+        "path": "0100F88012E34000/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_1.jpg",
+        "size": 341470,
+        "sha256": "50434d508174e9350ccdf045dc1a96ce0043c5b1cfce2cad7addb1a11160d90a"
+      },
+      {
+        "path": "0100F88012E34000/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_2.jpg",
+        "size": 979767,
+        "sha256": "eca63268253a47d90a732f0f9bfa201f578a7ddac51f9b543d5146af50ad3cba"
+      },
+      {
+        "path": "0100F88012E34000/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_3.jpg",
+        "size": 1063966,
+        "sha256": "dab04fac58f0d1788be19e2798a6eb4f44a3817d787322187f946e1d74ae90c3"
+      },
+      {
+        "path": "0100F88012E34000/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_4.jpg",
+        "size": 917405,
+        "sha256": "4fa791fa67ba9c56d85932b32d4fb701d3e772ffa5fe5eb0b93945f282c58c67"
+      },
+      {
+        "path": "0100F88012E34000/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_5.jpg",
+        "size": 931917,
+        "sha256": "ef47eea2c30e5733b36d4efdc1a86268648dbafb6013ebbb7e406f2301bcfbc9"
+      },
+      {
+        "path": "0100F88012E34000/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_6.jpg",
+        "size": 1170107,
+        "sha256": "b9e69e4588ff1c0962bf4acddbb29bb73cf66ad2a38dca7ea35129b15d0ae495"
+      },
+      {
+        "path": "0100F88012E34000/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_7.jpg",
+        "size": 1021097,
+        "sha256": "d0391abfa563c04e71ed6dc2cb46c40e35802057525e88e312fc4f725ff666d5"
+      },
+      {
+        "path": "0100F88012E34000/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_8.jpg",
+        "size": 1216723,
+        "sha256": "5533169186008f1468b9421e0d122bce126b38f19b0257700d099bd4e47bb46b"
+      },
+      {
+        "path": "0100F88012E34000/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_9.jpg",
+        "size": 592038,
+        "sha256": "f75bbc63e87b36db50109a73332910edc668a57c5b0318fc99279cefd3e0f7c2"
+      },
+      {
+        "path": "0100F88012E34000/romfs/cdvdroot/html_document/manual.htdocs/index.html",
+        "size": 1495,
+        "sha256": "8d10c381d7ded24747135cfcdbd5429c5c6e5aed30f6572b23dd68e0a53dee80"
+      },
+      {
+        "path": "0100F88012E34001/exefs/main",
+        "size": 21801741,
+        "sha256": "bb245122b4c448484af9b902c902ee60b13a87c50cf56780ac365c1de86af46a"
+      },
+      {
+        "path": "0100F88012E34001/romfs/cdvdroot/RES00.RDB",
+        "size": 5149666816,
+        "sha256": "ee5623ade29e3e2bc9895acb3722f84f540837814f58490df46c13ad078d3025"
+      },
+      {
+        "path": "0100F88012E34001/romfs/cdvdroot/RES00.RDI",
+        "size": 256000,
+        "sha256": "d1fc1df34b6af870867aa7ff5ba84e830ed664b4146880f8eb9071e8c365df20"
+      },
+      {
+        "path": "0100F88012E34001/romfs/cdvdroot/RES11.RDB",
+        "size": 415366656,
+        "sha256": "d7e82be79824a3f401929865152f523c1373232c658c9a0e447b6796a0a5cc8d"
+      },
+      {
+        "path": "0100F88012E34001/romfs/cdvdroot/RES12.RDB",
+        "size": 65454592,
+        "sha256": "c51dba29b53ff462563f18a00e21dc801a7b669933abba7bf3b06dc9ba78f60e"
+      },
+      {
+        "path": "0100F88012E34001/romfs/cdvdroot/RES13.RDB",
+        "size": 106497024,
+        "sha256": "a4759ea03a652f9f2ba20462e9893acd3c04f3a640d7e30564164734f051aa9f"
+      },
+      {
+        "path": "0100F88012E34001/romfs/cdvdroot/RES14.RDB",
+        "size": 34548224,
+        "sha256": "2523d2d33fa6a7dddd77717c14523486ffaf9c442ed945a95e2b56996bd91a67"
+      },
+      {
+        "path": "0100F88012E34001/romfs/cdvdroot/RES15.RDB",
+        "size": 50166784,
+        "sha256": "c559da852a9dc68d22c6a81e20591c8435d5c211cda25d146e37e192e9a6d994"
+      },
+      {
+        "path": "0100F88012E34001/romfs/cdvdroot/RES16.RDB",
+        "size": 72803840,
+        "sha256": "af4ae097dbae36a5de1f692a24a153d6338a3c4d6f5c90ec15316dff50541b8e"
+      },
+      {
+        "path": "0100F88012E34001/romfs/cdvdroot/RES17.RDB",
+        "size": 812658688,
+        "sha256": "d3de0328fccda5fb48086af8bef68fe16b468924896adc9fb3bd33b5f14a07f4"
+      },
+      {
+        "path": "0100F88012E34001/romfs/cdvdroot/RES18.RDB",
+        "size": 125265408,
+        "sha256": "cdcbb6a6c0e787ecb65246fb93a2a6dc192affeb4b173783e5b550a1f2904ca2"
+      },
+      {
+        "path": "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_1.jpg",
+        "size": 341470,
+        "sha256": "50434d508174e9350ccdf045dc1a96ce0043c5b1cfce2cad7addb1a11160d90a"
+      },
+      {
+        "path": "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_2.jpg",
+        "size": 979767,
+        "sha256": "eca63268253a47d90a732f0f9bfa201f578a7ddac51f9b543d5146af50ad3cba"
+      },
+      {
+        "path": "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_3.jpg",
+        "size": 1063966,
+        "sha256": "dab04fac58f0d1788be19e2798a6eb4f44a3817d787322187f946e1d74ae90c3"
+      },
+      {
+        "path": "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_4.jpg",
+        "size": 917405,
+        "sha256": "4fa791fa67ba9c56d85932b32d4fb701d3e772ffa5fe5eb0b93945f282c58c67"
+      },
+      {
+        "path": "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_5.jpg",
+        "size": 931917,
+        "sha256": "ef47eea2c30e5733b36d4efdc1a86268648dbafb6013ebbb7e406f2301bcfbc9"
+      },
+      {
+        "path": "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_6.jpg",
+        "size": 1170107,
+        "sha256": "b9e69e4588ff1c0962bf4acddbb29bb73cf66ad2a38dca7ea35129b15d0ae495"
+      },
+      {
+        "path": "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_7.jpg",
+        "size": 1021097,
+        "sha256": "d0391abfa563c04e71ed6dc2cb46c40e35802057525e88e312fc4f725ff666d5"
+      },
+      {
+        "path": "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_8.jpg",
+        "size": 1216723,
+        "sha256": "5533169186008f1468b9421e0d122bce126b38f19b0257700d099bd4e47bb46b"
+      },
+      {
+        "path": "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_9.jpg",
+        "size": 592038,
+        "sha256": "f75bbc63e87b36db50109a73332910edc668a57c5b0318fc99279cefd3e0f7c2"
+      },
+      {
+        "path": "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/index.html",
+        "size": 1495,
+        "sha256": "8d10c381d7ded24747135cfcdbd5429c5c6e5aed30f6572b23dd68e0a53dee80"
+      }
+    ],
+    "jobs": [
+      {
+        "name": "eden installation",
+        "status": "completed",
+        "scope": "small real-VCDIFF fixture"
+      },
+      {
+        "name": "completed output rerun",
+        "status": "completed",
+        "scope": "small real-VCDIFF fixture"
+      },
+      {
+        "name": "atmosphere installation",
+        "status": "completed",
+        "scope": "small real-VCDIFF fixture"
+      },
+      {
+        "name": "alternate extraction paths",
+        "status": "completed",
+        "scope": "small real-VCDIFF fixture"
+      },
+      {
+        "name": "resume verified partial output",
+        "status": "completed",
+        "scope": "small real-VCDIFF fixture"
+      },
+      {
+        "name": "reject wrong original hash",
+        "status": "completed",
+        "scope": "small real-VCDIFF fixture"
+      },
+      {
+        "name": "reject missing original",
+        "status": "completed",
+        "scope": "small real-VCDIFF fixture"
+      },
+      {
+        "name": "reject tampered patch",
+        "status": "completed",
+        "scope": "small real-VCDIFF fixture"
+      },
+      {
+        "name": "preserve unrelated output folder",
+        "status": "completed",
+        "scope": "small real-VCDIFF fixture"
+      },
+      {
+        "name": "reject source output overlap",
+        "status": "completed",
+        "scope": "small real-VCDIFF fixture"
+      },
+      {
+        "name": "optional Control standalone apply",
+        "status": "completed",
+        "scope": "small real-VCDIFF fixture"
+      },
+      {
+        "name": "optional Control completed rerun",
+        "status": "completed",
+        "scope": "small real-VCDIFF fixture"
+      },
+      {
+        "name": "reject wrong Control original",
+        "status": "completed",
+        "scope": "small real-VCDIFF fixture"
+      },
+      {
+        "name": "optional Control alongside game apply",
+        "status": "completed",
+        "scope": "small real-VCDIFF fixture"
+      },
+      {
+        "name": "Windows PowerShell full real-game installation (42 output paths)",
+        "status": "completed",
+        "scope": "actual published game files",
+        "verified_files": 42,
+        "seconds": 212.74
+      },
+      {
+        "name": "Real-game completed output rerun and input invariance",
+        "status": "completed",
+        "scope": "actual published game files",
+        "verified_files": 42,
+        "seconds": 83.94
+      }
+    ]
+  },
+  "installer_cases": {
+    "result": "PASS",
+    "tests": 14,
+    "originals_unchanged": true,
+    "jobs": [
+      {
+        "name": "eden installation",
+        "status": "completed",
+        "scope": "small real-VCDIFF fixture"
+      },
+      {
+        "name": "completed output rerun",
+        "status": "completed",
+        "scope": "small real-VCDIFF fixture"
+      },
+      {
+        "name": "atmosphere installation",
+        "status": "completed",
+        "scope": "small real-VCDIFF fixture"
+      },
+      {
+        "name": "alternate extraction paths",
+        "status": "completed",
+        "scope": "small real-VCDIFF fixture"
+      },
+      {
+        "name": "resume verified partial output",
+        "status": "completed",
+        "scope": "small real-VCDIFF fixture"
+      },
+      {
+        "name": "reject wrong original hash",
+        "status": "completed",
+        "scope": "small real-VCDIFF fixture"
+      },
+      {
+        "name": "reject missing original",
+        "status": "completed",
+        "scope": "small real-VCDIFF fixture"
+      },
+      {
+        "name": "reject tampered patch",
+        "status": "completed",
+        "scope": "small real-VCDIFF fixture"
+      },
+      {
+        "name": "preserve unrelated output folder",
+        "status": "completed",
+        "scope": "small real-VCDIFF fixture"
+      },
+      {
+        "name": "reject source output overlap",
+        "status": "completed",
+        "scope": "small real-VCDIFF fixture"
+      },
+      {
+        "name": "optional Control standalone apply",
+        "status": "completed",
+        "scope": "small real-VCDIFF fixture"
+      },
+      {
+        "name": "optional Control completed rerun",
+        "status": "completed",
+        "scope": "small real-VCDIFF fixture"
+      },
+      {
+        "name": "reject wrong Control original",
+        "status": "completed",
+        "scope": "small real-VCDIFF fixture"
+      },
+      {
+        "name": "optional Control alongside game apply",
+        "status": "completed",
+        "scope": "small real-VCDIFF fixture"
+      }
+    ]
+  },
+  "tool": {
+    "version": "3.2.2",
+    "url": "https://github.com/jmacd/xdelta/releases/tag/v3.2.2",
+    "path": "tools/xdelta3.exe",
+    "size": 340992,
+    "sha256": "732980d52f9220dc81817ccdd0c295eadce8a0048a24c2a771a73f791ac824e9"
+  }
+}

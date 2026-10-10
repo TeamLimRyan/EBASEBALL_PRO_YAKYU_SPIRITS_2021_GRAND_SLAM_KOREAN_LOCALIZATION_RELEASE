@@ -1,0 +1,634 @@
+{
+  "schema": 2,
+  "version": "0.91",
+  "content_version": "0.9",
+  "game_version": "1.12.0",
+  "title_ids": [
+    "0100F88012E34000",
+    "0100F88012E34001"
+  ],
+  "tool": {
+    "path": "tools/xdelta3.exe",
+    "size": 340992,
+    "sha256": "732980d52f9220dc81817ccdd0c295eadce8a0048a24c2a771a73f791ac824e9"
+  },
+  "bundle": {
+    "format": "ordered raw byte concatenation; no compression or game data rebuild",
+    "source": {
+      "size": 6019786249,
+      "sha256": "b74823cd5d9421d6322b48bc80a5fc763d4ca69ede46590157c9ff52b37aed60"
+    },
+    "output": {
+      "size": 6884780758,
+      "sha256": "fcb58d340275f3d3aebfb2da8cdb9b2c9a0a341f2fdaabbda568c00921ad0c6a"
+    },
+    "patch": {
+      "path": "patch/game.xdelta",
+      "size": 2135401507,
+      "sha256": "5a0e2b21f6450507c022d0b399188b3584d13be209d020e1da0a2918e87d99cf"
+    }
+  },
+  "files": [
+    {
+      "source": "effective/exefs/main",
+      "input": {
+        "size": 21985677,
+        "sha256": "dbf86017d51b7cff69dca33ea05a93f290cce031ab01e19899a74c3bc05ca809"
+      },
+      "output": {
+        "size": 22059000,
+        "sha256": "53eec3296cc7c4cd3ec349a5ad0da491a50e61456748e25f79a7ed9d32f12f29"
+      },
+      "destinations": [
+        "0100F88012E34000/exefs/main"
+      ],
+      "source_offset": 0,
+      "target_offset": 0
+    },
+    {
+      "source": "effective/romfs/cdvdroot/RES00.RDB",
+      "input": {
+        "size": 4455587840,
+        "sha256": "6521eaf9d6c7f8e4ea629240b0894815d4fdbd9b5e42e6a88e796dbaff67004c"
+      },
+      "output": {
+        "size": 5149666816,
+        "sha256": "ee5623ade29e3e2bc9895acb3722f84f540837814f58490df46c13ad078d3025"
+      },
+      "destinations": [
+        "0100F88012E34000/romfs/cdvdroot/RES00.RDB",
+        "0100F88012E34001/romfs/cdvdroot/RES00.RDB"
+      ],
+      "source_offset": 21985677,
+      "target_offset": 22059000
+    },
+    {
+      "source": "effective/romfs/cdvdroot/RES00.RDI",
+      "input": {
+        "size": 256000,
+        "sha256": "eca845300424c915247a5adaa2afd74e49c6d4bc64dc9b436d6a91a6dba10767"
+      },
+      "output": {
+        "size": 256000,
+        "sha256": "d1fc1df34b6af870867aa7ff5ba84e830ed664b4146880f8eb9071e8c365df20"
+      },
+      "destinations": [
+        "0100F88012E34000/romfs/cdvdroot/RES00.RDI",
+        "0100F88012E34001/romfs/cdvdroot/RES00.RDI"
+      ],
+      "source_offset": 4477573517,
+      "target_offset": 5171725816
+    },
+    {
+      "source": "effective/romfs/cdvdroot/RES11.RDB",
+      "input": {
+        "size": 408441344,
+        "sha256": "9e60314563b1f01f40cd144c9df1a7a9d3f97c570ee05c687d6bea0748fee2ce"
+      },
+      "output": {
+        "size": 415366656,
+        "sha256": "d7e82be79824a3f401929865152f523c1373232c658c9a0e447b6796a0a5cc8d"
+      },
+      "destinations": [
+        "0100F88012E34000/romfs/cdvdroot/RES11.RDB",
+        "0100F88012E34001/romfs/cdvdroot/RES11.RDB"
+      ],
+      "source_offset": 4477829517,
+      "target_offset": 5171981816
+    },
+    {
+      "source": "effective/romfs/cdvdroot/RES12.RDB",
+      "input": {
+        "size": 48382464,
+        "sha256": "cb35f60037e15e1de729f7ddbeb99a8ca6635ffe4797a4bdd7ea1dfa448bd0ce"
+      },
+      "output": {
+        "size": 65454592,
+        "sha256": "c51dba29b53ff462563f18a00e21dc801a7b669933abba7bf3b06dc9ba78f60e"
+      },
+      "destinations": [
+        "0100F88012E34000/romfs/cdvdroot/RES12.RDB",
+        "0100F88012E34001/romfs/cdvdroot/RES12.RDB"
+      ],
+      "source_offset": 4886270861,
+      "target_offset": 5587348472
+    },
+    {
+      "source": "effective/romfs/cdvdroot/RES13.RDB",
+      "input": {
+        "size": 82171904,
+        "sha256": "9873027927c541b527e3ed4afce25320c66e8307b85168d17a41ee9c67ae4dd6"
+      },
+      "output": {
+        "size": 106497024,
+        "sha256": "a4759ea03a652f9f2ba20462e9893acd3c04f3a640d7e30564164734f051aa9f"
+      },
+      "destinations": [
+        "0100F88012E34000/romfs/cdvdroot/RES13.RDB",
+        "0100F88012E34001/romfs/cdvdroot/RES13.RDB"
+      ],
+      "source_offset": 4934653325,
+      "target_offset": 5652803064
+    },
+    {
+      "source": "effective/romfs/cdvdroot/RES14.RDB",
+      "input": {
+        "size": 27355648,
+        "sha256": "0d17b24fa21d613b641cc9274481ba5fa1b54efef00e243c40d3eb9fbba62074"
+      },
+      "output": {
+        "size": 34548224,
+        "sha256": "2523d2d33fa6a7dddd77717c14523486ffaf9c442ed945a95e2b56996bd91a67"
+      },
+      "destinations": [
+        "0100F88012E34000/romfs/cdvdroot/RES14.RDB",
+        "0100F88012E34001/romfs/cdvdroot/RES14.RDB"
+      ],
+      "source_offset": 5016825229,
+      "target_offset": 5759300088
+    },
+    {
+      "source": "effective/romfs/cdvdroot/RES15.RDB",
+      "input": {
+        "size": 47186944,
+        "sha256": "5b83c60694217bdeb02f6adfaae4b4f34ae0592b07938de1694fb25b04f80b86"
+      },
+      "output": {
+        "size": 50166784,
+        "sha256": "c559da852a9dc68d22c6a81e20591c8435d5c211cda25d146e37e192e9a6d994"
+      },
+      "destinations": [
+        "0100F88012E34000/romfs/cdvdroot/RES15.RDB",
+        "0100F88012E34001/romfs/cdvdroot/RES15.RDB"
+      ],
+      "source_offset": 5044180877,
+      "target_offset": 5793848312
+    },
+    {
+      "source": "effective/romfs/cdvdroot/RES16.RDB",
+      "input": {
+        "size": 49110528,
+        "sha256": "fa1fe4d5543b0c501540c4fb599f0e7346515b63765cf07ef61dae43d12d32b9"
+      },
+      "output": {
+        "size": 72803840,
+        "sha256": "af4ae097dbae36a5de1f692a24a153d6338a3c4d6f5c90ec15316dff50541b8e"
+      },
+      "destinations": [
+        "0100F88012E34000/romfs/cdvdroot/RES16.RDB",
+        "0100F88012E34001/romfs/cdvdroot/RES16.RDB"
+      ],
+      "source_offset": 5091367821,
+      "target_offset": 5844015096
+    },
+    {
+      "source": "effective/romfs/cdvdroot/RES17.RDB",
+      "input": {
+        "size": 725687296,
+        "sha256": "dde4a95bfc22540e03d01009af803c9527c4221a681a7996f0266b110ad10f8a"
+      },
+      "output": {
+        "size": 812658688,
+        "sha256": "d3de0328fccda5fb48086af8bef68fe16b468924896adc9fb3bd33b5f14a07f4"
+      },
+      "destinations": [
+        "0100F88012E34000/romfs/cdvdroot/RES17.RDB",
+        "0100F88012E34001/romfs/cdvdroot/RES17.RDB"
+      ],
+      "source_offset": 5140478349,
+      "target_offset": 5916818936
+    },
+    {
+      "source": "effective/romfs/cdvdroot/RES18.RDB",
+      "input": {
+        "size": 124851712,
+        "sha256": "9416b4a03ae5063ef6275d0e21e6680f46b8968a18da9fdbdc8c951e0b47113c"
+      },
+      "output": {
+        "size": 125265408,
+        "sha256": "cdcbb6a6c0e787ecb65246fb93a2a6dc192affeb4b173783e5b550a1f2904ca2"
+      },
+      "destinations": [
+        "0100F88012E34000/romfs/cdvdroot/RES18.RDB",
+        "0100F88012E34001/romfs/cdvdroot/RES18.RDB"
+      ],
+      "source_offset": 5866165645,
+      "target_offset": 6729477624
+    },
+    {
+      "source": "effective/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_1.jpg",
+      "input": {
+        "size": 254475,
+        "sha256": "26390b48960311cb6288d13b1c4f9613a68dd72b633e60db997cb9236678c141"
+      },
+      "output": {
+        "size": 341470,
+        "sha256": "50434d508174e9350ccdf045dc1a96ce0043c5b1cfce2cad7addb1a11160d90a"
+      },
+      "destinations": [
+        "0100F88012E34000/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_1.jpg",
+        "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_1.jpg"
+      ],
+      "source_offset": 5991017357,
+      "target_offset": 6854743032
+    },
+    {
+      "source": "effective/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_2.jpg",
+      "input": {
+        "size": 821538,
+        "sha256": "ce2e967b30071c0b85be5e87b1fca88e0d252ddd447e2a3d8c47b10683136a66"
+      },
+      "output": {
+        "size": 979767,
+        "sha256": "eca63268253a47d90a732f0f9bfa201f578a7ddac51f9b543d5146af50ad3cba"
+      },
+      "destinations": [
+        "0100F88012E34000/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_2.jpg",
+        "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_2.jpg"
+      ],
+      "source_offset": 5991271832,
+      "target_offset": 6855084502
+    },
+    {
+      "source": "effective/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_3.jpg",
+      "input": {
+        "size": 961512,
+        "sha256": "9b26e26c3b1330304ea077f7885e2a703ef9445a4fbf6a128cabf113923cf55b"
+      },
+      "output": {
+        "size": 1063966,
+        "sha256": "dab04fac58f0d1788be19e2798a6eb4f44a3817d787322187f946e1d74ae90c3"
+      },
+      "destinations": [
+        "0100F88012E34000/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_3.jpg",
+        "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_3.jpg"
+      ],
+      "source_offset": 5992093370,
+      "target_offset": 6856064269
+    },
+    {
+      "source": "effective/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_4.jpg",
+      "input": {
+        "size": 829899,
+        "sha256": "69de23c7cf50813f3b7da9c80ef93577eff4e84ea070b054aa9906647647d0ed"
+      },
+      "output": {
+        "size": 917405,
+        "sha256": "4fa791fa67ba9c56d85932b32d4fb701d3e772ffa5fe5eb0b93945f282c58c67"
+      },
+      "destinations": [
+        "0100F88012E34000/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_4.jpg",
+        "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_4.jpg"
+      ],
+      "source_offset": 5993054882,
+      "target_offset": 6857128235
+    },
+    {
+      "source": "effective/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_5.jpg",
+      "input": {
+        "size": 819651,
+        "sha256": "da51f6741af1b1ba82fb8a5d82d2aa3b64c2c416b5d439065ff2d88b4b4ccd49"
+      },
+      "output": {
+        "size": 931917,
+        "sha256": "ef47eea2c30e5733b36d4efdc1a86268648dbafb6013ebbb7e406f2301bcfbc9"
+      },
+      "destinations": [
+        "0100F88012E34000/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_5.jpg",
+        "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_5.jpg"
+      ],
+      "source_offset": 5993884781,
+      "target_offset": 6858045640
+    },
+    {
+      "source": "effective/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_6.jpg",
+      "input": {
+        "size": 1035529,
+        "sha256": "1c8e2d275f6bb33fdddf6803741419a9e07a3ae82dd38f83bafdc9dc69bcac14"
+      },
+      "output": {
+        "size": 1170107,
+        "sha256": "b9e69e4588ff1c0962bf4acddbb29bb73cf66ad2a38dca7ea35129b15d0ae495"
+      },
+      "destinations": [
+        "0100F88012E34000/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_6.jpg",
+        "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_6.jpg"
+      ],
+      "source_offset": 5994704432,
+      "target_offset": 6858977557
+    },
+    {
+      "source": "effective/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_7.jpg",
+      "input": {
+        "size": 851321,
+        "sha256": "26c64aa8eabae3e72e98b6f73633177d39d697543447994f2c997cbb93d39abd"
+      },
+      "output": {
+        "size": 1021097,
+        "sha256": "d0391abfa563c04e71ed6dc2cb46c40e35802057525e88e312fc4f725ff666d5"
+      },
+      "destinations": [
+        "0100F88012E34000/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_7.jpg",
+        "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_7.jpg"
+      ],
+      "source_offset": 5995739961,
+      "target_offset": 6860147664
+    },
+    {
+      "source": "effective/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_8.jpg",
+      "input": {
+        "size": 996875,
+        "sha256": "4caf9f628219f46e29c40885deef1390434c27e8207040755662e9358f6d78d1"
+      },
+      "output": {
+        "size": 1216723,
+        "sha256": "5533169186008f1468b9421e0d122bce126b38f19b0257700d099bd4e47bb46b"
+      },
+      "destinations": [
+        "0100F88012E34000/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_8.jpg",
+        "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_8.jpg"
+      ],
+      "source_offset": 5996591282,
+      "target_offset": 6861168761
+    },
+    {
+      "source": "effective/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_9.jpg",
+      "input": {
+        "size": 465384,
+        "sha256": "6d8668fa7222abc9f2a59bf3e696dfdc052fec136f34bbddd921285926aaa247"
+      },
+      "output": {
+        "size": 592038,
+        "sha256": "f75bbc63e87b36db50109a73332910edc668a57c5b0318fc99279cefd3e0f7c2"
+      },
+      "destinations": [
+        "0100F88012E34000/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_9.jpg",
+        "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_9.jpg"
+      ],
+      "source_offset": 5997588157,
+      "target_offset": 6862385484
+    },
+    {
+      "source": "effective/romfs/cdvdroot/html_document/manual.htdocs/index.html",
+      "input": {
+        "size": 1495,
+        "sha256": "f9b107b1f7d9fad2a56d6ee895ff94d529eaaf5c3895f337488357a264123b31"
+      },
+      "output": {
+        "size": 1495,
+        "sha256": "8d10c381d7ded24747135cfcdbd5429c5c6e5aed30f6572b23dd68e0a53dee80"
+      },
+      "destinations": [
+        "0100F88012E34000/romfs/cdvdroot/html_document/manual.htdocs/index.html",
+        "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/index.html"
+      ],
+      "source_offset": 5998053541,
+      "target_offset": 6862977522
+    },
+    {
+      "source": "program1/exefs/main",
+      "input": {
+        "size": 21731213,
+        "sha256": "d650022bb474b8bea936d49636c53c22796a6f3e26cc2cd1b1a1a577c062558b"
+      },
+      "output": {
+        "size": 21801741,
+        "sha256": "bb245122b4c448484af9b902c902ee60b13a87c50cf56780ac365c1de86af46a"
+      },
+      "destinations": [
+        "0100F88012E34001/exefs/main"
+      ],
+      "source_offset": 5998055036,
+      "target_offset": 6862979017
+    }
+  ],
+  "targets": [
+    {
+      "path": "0100F88012E34000/exefs/main",
+      "size": 22059000,
+      "sha256": "53eec3296cc7c4cd3ec349a5ad0da491a50e61456748e25f79a7ed9d32f12f29"
+    },
+    {
+      "path": "0100F88012E34000/romfs/cdvdroot/RES00.RDB",
+      "size": 5149666816,
+      "sha256": "ee5623ade29e3e2bc9895acb3722f84f540837814f58490df46c13ad078d3025"
+    },
+    {
+      "path": "0100F88012E34000/romfs/cdvdroot/RES00.RDI",
+      "size": 256000,
+      "sha256": "d1fc1df34b6af870867aa7ff5ba84e830ed664b4146880f8eb9071e8c365df20"
+    },
+    {
+      "path": "0100F88012E34000/romfs/cdvdroot/RES11.RDB",
+      "size": 415366656,
+      "sha256": "d7e82be79824a3f401929865152f523c1373232c658c9a0e447b6796a0a5cc8d"
+    },
+    {
+      "path": "0100F88012E34000/romfs/cdvdroot/RES12.RDB",
+      "size": 65454592,
+      "sha256": "c51dba29b53ff462563f18a00e21dc801a7b669933abba7bf3b06dc9ba78f60e"
+    },
+    {
+      "path": "0100F88012E34000/romfs/cdvdroot/RES13.RDB",
+      "size": 106497024,
+      "sha256": "a4759ea03a652f9f2ba20462e9893acd3c04f3a640d7e30564164734f051aa9f"
+    },
+    {
+      "path": "0100F88012E34000/romfs/cdvdroot/RES14.RDB",
+      "size": 34548224,
+      "sha256": "2523d2d33fa6a7dddd77717c14523486ffaf9c442ed945a95e2b56996bd91a67"
+    },
+    {
+      "path": "0100F88012E34000/romfs/cdvdroot/RES15.RDB",
+      "size": 50166784,
+      "sha256": "c559da852a9dc68d22c6a81e20591c8435d5c211cda25d146e37e192e9a6d994"
+    },
+    {
+      "path": "0100F88012E34000/romfs/cdvdroot/RES16.RDB",
+      "size": 72803840,
+      "sha256": "af4ae097dbae36a5de1f692a24a153d6338a3c4d6f5c90ec15316dff50541b8e"
+    },
+    {
+      "path": "0100F88012E34000/romfs/cdvdroot/RES17.RDB",
+      "size": 812658688,
+      "sha256": "d3de0328fccda5fb48086af8bef68fe16b468924896adc9fb3bd33b5f14a07f4"
+    },
+    {
+      "path": "0100F88012E34000/romfs/cdvdroot/RES18.RDB",
+      "size": 125265408,
+      "sha256": "cdcbb6a6c0e787ecb65246fb93a2a6dc192affeb4b173783e5b550a1f2904ca2"
+    },
+    {
+      "path": "0100F88012E34000/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_1.jpg",
+      "size": 341470,
+      "sha256": "50434d508174e9350ccdf045dc1a96ce0043c5b1cfce2cad7addb1a11160d90a"
+    },
+    {
+      "path": "0100F88012E34000/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_2.jpg",
+      "size": 979767,
+      "sha256": "eca63268253a47d90a732f0f9bfa201f578a7ddac51f9b543d5146af50ad3cba"
+    },
+    {
+      "path": "0100F88012E34000/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_3.jpg",
+      "size": 1063966,
+      "sha256": "dab04fac58f0d1788be19e2798a6eb4f44a3817d787322187f946e1d74ae90c3"
+    },
+    {
+      "path": "0100F88012E34000/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_4.jpg",
+      "size": 917405,
+      "sha256": "4fa791fa67ba9c56d85932b32d4fb701d3e772ffa5fe5eb0b93945f282c58c67"
+    },
+    {
+      "path": "0100F88012E34000/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_5.jpg",
+      "size": 931917,
+      "sha256": "ef47eea2c30e5733b36d4efdc1a86268648dbafb6013ebbb7e406f2301bcfbc9"
+    },
+    {
+      "path": "0100F88012E34000/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_6.jpg",
+      "size": 1170107,
+      "sha256": "b9e69e4588ff1c0962bf4acddbb29bb73cf66ad2a38dca7ea35129b15d0ae495"
+    },
+    {
+      "path": "0100F88012E34000/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_7.jpg",
+      "size": 1021097,
+      "sha256": "d0391abfa563c04e71ed6dc2cb46c40e35802057525e88e312fc4f725ff666d5"
+    },
+    {
+      "path": "0100F88012E34000/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_8.jpg",
+      "size": 1216723,
+      "sha256": "5533169186008f1468b9421e0d122bce126b38f19b0257700d099bd4e47bb46b"
+    },
+    {
+      "path": "0100F88012E34000/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_9.jpg",
+      "size": 592038,
+      "sha256": "f75bbc63e87b36db50109a73332910edc668a57c5b0318fc99279cefd3e0f7c2"
+    },
+    {
+      "path": "0100F88012E34000/romfs/cdvdroot/html_document/manual.htdocs/index.html",
+      "size": 1495,
+      "sha256": "8d10c381d7ded24747135cfcdbd5429c5c6e5aed30f6572b23dd68e0a53dee80"
+    },
+    {
+      "path": "0100F88012E34001/exefs/main",
+      "size": 21801741,
+      "sha256": "bb245122b4c448484af9b902c902ee60b13a87c50cf56780ac365c1de86af46a"
+    },
+    {
+      "path": "0100F88012E34001/romfs/cdvdroot/RES00.RDB",
+      "size": 5149666816,
+      "sha256": "ee5623ade29e3e2bc9895acb3722f84f540837814f58490df46c13ad078d3025"
+    },
+    {
+      "path": "0100F88012E34001/romfs/cdvdroot/RES00.RDI",
+      "size": 256000,
+      "sha256": "d1fc1df34b6af870867aa7ff5ba84e830ed664b4146880f8eb9071e8c365df20"
+    },
+    {
+      "path": "0100F88012E34001/romfs/cdvdroot/RES11.RDB",
+      "size": 415366656,
+      "sha256": "d7e82be79824a3f401929865152f523c1373232c658c9a0e447b6796a0a5cc8d"
+    },
+    {
+      "path": "0100F88012E34001/romfs/cdvdroot/RES12.RDB",
+      "size": 65454592,
+      "sha256": "c51dba29b53ff462563f18a00e21dc801a7b669933abba7bf3b06dc9ba78f60e"
+    },
+    {
+      "path": "0100F88012E34001/romfs/cdvdroot/RES13.RDB",
+      "size": 106497024,
+      "sha256": "a4759ea03a652f9f2ba20462e9893acd3c04f3a640d7e30564164734f051aa9f"
+    },
+    {
+      "path": "0100F88012E34001/romfs/cdvdroot/RES14.RDB",
+      "size": 34548224,
+      "sha256": "2523d2d33fa6a7dddd77717c14523486ffaf9c442ed945a95e2b56996bd91a67"
+    },
+    {
+      "path": "0100F88012E34001/romfs/cdvdroot/RES15.RDB",
+      "size": 50166784,
+      "sha256": "c559da852a9dc68d22c6a81e20591c8435d5c211cda25d146e37e192e9a6d994"
+    },
+    {
+      "path": "0100F88012E34001/romfs/cdvdroot/RES16.RDB",
+      "size": 72803840,
+      "sha256": "af4ae097dbae36a5de1f692a24a153d6338a3c4d6f5c90ec15316dff50541b8e"
+    },
+    {
+      "path": "0100F88012E34001/romfs/cdvdroot/RES17.RDB",
+      "size": 812658688,
+      "sha256": "d3de0328fccda5fb48086af8bef68fe16b468924896adc9fb3bd33b5f14a07f4"
+    },
+    {
+      "path": "0100F88012E34001/romfs/cdvdroot/RES18.RDB",
+      "size": 125265408,
+      "sha256": "cdcbb6a6c0e787ecb65246fb93a2a6dc192affeb4b173783e5b550a1f2904ca2"
+    },
+    {
+      "path": "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_1.jpg",
+      "size": 341470,
+      "sha256": "50434d508174e9350ccdf045dc1a96ce0043c5b1cfce2cad7addb1a11160d90a"
+    },
+    {
+      "path": "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_2.jpg",
+      "size": 979767,
+      "sha256": "eca63268253a47d90a732f0f9bfa201f578a7ddac51f9b543d5146af50ad3cba"
+    },
+    {
+      "path": "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_3.jpg",
+      "size": 1063966,
+      "sha256": "dab04fac58f0d1788be19e2798a6eb4f44a3817d787322187f946e1d74ae90c3"
+    },
+    {
+      "path": "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_4.jpg",
+      "size": 917405,
+      "sha256": "4fa791fa67ba9c56d85932b32d4fb701d3e772ffa5fe5eb0b93945f282c58c67"
+    },
+    {
+      "path": "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_5.jpg",
+      "size": 931917,
+      "sha256": "ef47eea2c30e5733b36d4efdc1a86268648dbafb6013ebbb7e406f2301bcfbc9"
+    },
+    {
+      "path": "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_6.jpg",
+      "size": 1170107,
+      "sha256": "b9e69e4588ff1c0962bf4acddbb29bb73cf66ad2a38dca7ea35129b15d0ae495"
+    },
+    {
+      "path": "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_7.jpg",
+      "size": 1021097,
+      "sha256": "d0391abfa563c04e71ed6dc2cb46c40e35802057525e88e312fc4f725ff666d5"
+    },
+    {
+      "path": "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_8.jpg",
+      "size": 1216723,
+      "sha256": "5533169186008f1468b9421e0d122bce126b38f19b0257700d099bd4e47bb46b"
+    },
+    {
+      "path": "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/img/pc_page_9.jpg",
+      "size": 592038,
+      "sha256": "f75bbc63e87b36db50109a73332910edc668a57c5b0318fc99279cefd3e0f7c2"
+    },
+    {
+      "path": "0100F88012E34001/romfs/cdvdroot/html_document/manual.htdocs/index.html",
+      "size": 1495,
+      "sha256": "8d10c381d7ded24747135cfcdbd5429c5c6e5aed30f6572b23dd68e0a53dee80"
+    }
+  ],
+  "control": {
+    "source": {
+      "size": 1603224632,
+      "sha256": "40fd8c9284d45909b03f804653e4ee038d7401c30b34b5726231ce121d244f4a"
+    },
+    "output": {
+      "size": 1603224632,
+      "sha256": "555aa6d70370f45d71ddf3e25a4b2d7dfacb7a729b3b3e00413918e90fc2c6b2"
+    },
+    "patch": "patch/control_update.xdelta",
+    "delta": {
+      "size": 203999,
+      "sha256": "cfdd74b06798f00228cfcfd34db8f656393e32d175158d94c4000a1462cf18bb"
+    },
+    "target_name": "eBASEBALL_2021_v1.12.0_Korean_Control_v0.91.nsp",
+    "verification": "Unchanged v0.9 published direct delta. Prior roundtrip PASS reused; new NSP decode not repeated."
+  }
+}

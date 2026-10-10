@@ -1,6 +1,13 @@
 *.nsp
 *.nca
+*.xci
 *.keys
 *.sav
-__pycache__/
+*.bin
+*.RDB
+*.RDI
+*.xdelta
+*.exe
 *.zip
+.env
+__pycache__/
