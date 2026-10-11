@@ -1,252 +1,46 @@
-﻿[CmdletBinding()]
-param(
-    [string]$Source,
-    [Parameter(Mandatory=$true)][string]$Out,
-    [ValidateSet('eden','atmosphere')][string]$Layout = 'eden',
-    [string]$UpdateNsp,
-    [switch]$ControlOnly
-)
-$ErrorActionPreference = 'Stop'
+[CmdletBinding()]
+param([string]$BaseNsp,[string]$UpdateNsp,[string]$Out)
+$ErrorActionPreference='Stop'
 Set-StrictMode -Version Latest
-
-function Get-SHA([string]$Path) {
-    $stream = [IO.File]::OpenRead($Path)
-    $hasher = [Security.Cryptography.SHA256]::Create()
-    try { return [BitConverter]::ToString($hasher.ComputeHash($stream)).Replace('-', '').ToLowerInvariant() }
-    finally { $stream.Dispose(); $hasher.Dispose() }
-}
-function Test-File([string]$Path, $Expected) {
-    if (!(Test-Path -LiteralPath $Path -PathType Leaf)) { return $false }
-    $item = Get-Item -LiteralPath $Path
-    if ($item.Length -ne $Expected.size) { return $false }
-    return (Get-SHA $Path) -eq $Expected.sha256
-}
-function Assert-File([string]$Path, $Expected) {
-    if (!(Test-File $Path $Expected)) { throw "Wrong file size or SHA-256: $Path" }
-}
-function Save-JSON([string]$Path, $Value) {
-    $text = $Value | ConvertTo-Json -Depth 12
-    [IO.File]::WriteAllText($Path + '.tmp', $text, (New-Object Text.UTF8Encoding($false)))
-    Move-Item -LiteralPath ($Path + '.tmp') -Destination $Path -Force
-}
-function Safe-Path([string]$Root, [string]$Relative) {
-    if ([IO.Path]::IsPathRooted($Relative) -or $Relative -match '(^|[\\/])\.\.([\\/]|$)|:') { throw 'Unsafe relative path in manifest' }
-    $base = [IO.Path]::GetFullPath($Root).TrimEnd('\','/')
-    $full = [IO.Path]::GetFullPath((Join-Path $base $Relative))
-    if (!$full.StartsWith($base + [IO.Path]::DirectorySeparatorChar, [StringComparison]::OrdinalIgnoreCase)) { throw 'Path escapes its root' }
-    $walk = $full
-    while ($walk -and $walk.Length -ge $base.Length) {
-        if (Test-Path -LiteralPath $walk) {
-            if (((Get-Item -LiteralPath $walk -Force).Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0) { throw "Link or junction unsupported: $walk" }
-        }
-        $walk = [IO.Path]::GetDirectoryName($walk)
-    }
-    return $full
-}
-function Find-Source($Row) {
-    $rel = [string]$Row.source
-    $candidates = @($rel)
-    if ($rel.StartsWith('effective/')) {
-        $suffix = $rel.Substring(10)
-        $candidates += @(('program0/' + $suffix), $suffix)
-    } elseif ($rel.StartsWith('program1/')) { $candidates += 'update/' + $rel }
-    foreach ($candidate in $candidates) {
-        $p = Safe-Path $sourceRoot $candidate
-        if (Test-File $p $Row.input) { return $p }
-    }
-    throw "Original file missing or wrong version: $rel (requires Japanese Base v0 + Update 1.12.0)"
-}
-function Target-Path([string]$Root, [string]$Relative) {
-    $split = $Relative.IndexOf('/')
-    $title = $Relative.Substring(0, $split)
-    $rel = $Relative.Substring($split + 1)
-    if ($Layout -eq 'eden') { return Safe-Path $Root ($title + '/KoreanPatch/' + $rel) }
-    return Safe-Path $Root ('atmosphere/contents/' + $title + '/' + $rel)
-}
-
-function Invoke-Control([string]$Nsp, [string]$Destination, $Manifest) {
-    $original = (Resolve-Path -LiteralPath $Nsp).Path
-    $dest = [IO.Path]::GetFullPath($Destination)
-    Assert-File $original $Manifest.control.source
-    Assert-File (Safe-Path $PSScriptRoot $Manifest.control.patch) $Manifest.control.delta
-    if (Test-Path -LiteralPath $dest) {
-        Assert-File $dest $Manifest.control.output
-        Write-Host 'PASS: existing title/icon update verified.'
-        return
-    }
-    $parent = [IO.Path]::GetDirectoryName($dest)
-    New-Item -ItemType Directory -Force -Path $parent | Out-Null
-    $dest = Safe-Path $parent ([IO.Path]::GetFileName($dest))
-    $partial = Safe-Path $parent ([IO.Path]::GetFileName($dest) + '.partial')
-    & $exe -f -d -s $original (Safe-Path $PSScriptRoot $Manifest.control.patch) $partial
-    if ($LASTEXITCODE -ne 0) { throw 'Title/icon xdelta failed' }
-    Assert-File $partial $Manifest.control.output
-    Move-Item -LiteralPath $partial -Destination $dest
-    Write-Host "PASS: title/icon update saved to $dest"
-}
-function Copy-DecodedFile($Reader, [long]$Size, [string]$Partial, $Expected, $WholeHasher) {
-    $hasher = [Security.Cryptography.SHA256]::Create()
-    $writer = $null
-    try {
-        if ($Partial) { $writer = [IO.File]::Open($Partial, [IO.FileMode]::Create, [IO.FileAccess]::Write, [IO.FileShare]::None) }
-        $buffer = New-Object byte[] (8 * 1024 * 1024)
-        $left = $Size
-        while ($left -gt 0) {
-            $n = $Reader.Read($buffer, 0, [int][Math]::Min($left, [long]$buffer.Length))
-            if ($n -le 0) { throw 'Truncated xdelta output' }
-            $hasher.TransformBlock($buffer, 0, $n, $null, 0) | Out-Null
-            $WholeHasher.TransformBlock($buffer, 0, $n, $null, 0) | Out-Null
-            if ($writer) { $writer.Write($buffer, 0, $n) }
-            $left -= $n
-        }
-        $hasher.TransformFinalBlock((New-Object byte[] 0), 0, 0) | Out-Null
-        $hash = [BitConverter]::ToString($hasher.Hash).Replace('-', '').ToLowerInvariant()
-        if ($hash -ne $Expected.sha256) { throw 'Decoded game file SHA-256 mismatch' }
-    } finally { if ($writer) { $writer.Dispose() }; $hasher.Dispose() }
-}
-
-$savedXdelta = $env:XDELTA
-$lock = $null
-$decoder = $null
-$decoderStarted = $false
-$diagnostic = $null
-$stage = $null
-$completed = 0
-try {
-    $env:XDELTA = $null
-    $manifestPath = Join-Path $PSScriptRoot 'manifest.json'
-    $m = Get-Content -LiteralPath $manifestPath -Raw -Encoding UTF8 | ConvertFrom-Json
-    if ($m.version -ne '0.93' -or $m.schema -ne 2) { throw 'Unsupported package manifest' }
-    $exe = Safe-Path $PSScriptRoot $m.tool.path
-    Assert-File $exe $m.tool
-    if ($ControlOnly) {
-        if (!$UpdateNsp) { throw '-ControlOnly requires -UpdateNsp' }
-        Invoke-Control $UpdateNsp $Out $m
-        exit 0
-    }
-    if (!$Source) { throw 'Specify -Source with the original extracted game folder' }
-    $sourceRoot = (Resolve-Path -LiteralPath $Source).Path.TrimEnd('\','/')
-    $destination = [IO.Path]::GetFullPath($Out).TrimEnd('\','/')
-    if ($destination -eq $sourceRoot -or $destination.StartsWith($sourceRoot + '\', [StringComparison]::OrdinalIgnoreCase) -or $sourceRoot.StartsWith($destination + '\', [StringComparison]::OrdinalIgnoreCase)) { throw 'Source and output directories must not overlap' }
-    $packageHash = Get-SHA $manifestPath
-    $parent = [IO.Path]::GetDirectoryName($destination)
-    $leaf = [IO.Path]::GetFileName($destination)
-    New-Item -ItemType Directory -Force -Path $parent | Out-Null
-    $destination = Safe-Path $parent $leaf
-    $stage = Safe-Path $parent ('.' + $leaf + '.v093-stage')
-    $diagnostic = Safe-Path $parent ('.' + $leaf + '.v093-diagnostic.json')
-    $lockPath = Safe-Path $parent ('.' + $leaf + '.v093-lock')
-    $lock = [IO.File]::Open($lockPath, [IO.FileMode]::OpenOrCreate, [IO.FileAccess]::ReadWrite, [IO.FileShare]::None)
-    $marker = [ordered]@{ package_sha256=$packageHash; layout=$Layout; source=$sourceRoot; version='0.93' }
-    if (Test-Path -LiteralPath $destination) {
-        $priorMarker = Join-Path $destination 'package-id.json'
-        if (!(Test-Path -LiteralPath $priorMarker -PathType Leaf)) { throw 'Output folder already exists and is not this installer output. Choose another -Out path.' }
-        $old = Get-Content -LiteralPath $priorMarker -Raw -Encoding UTF8 | ConvertFrom-Json
-        if ($old.package_sha256 -ne $packageHash -or $old.layout -ne $Layout -or $old.source -ne $sourceRoot) { throw 'Existing output belongs to another installation' }
-        foreach ($target in $m.targets) { Assert-File (Target-Path $destination $target.path) $target }
-        if ($UpdateNsp) { Invoke-Control $UpdateNsp (Join-Path $destination $m.control.target_name) $m }
-        Write-Host 'PASS: existing installation verified.'
-        exit 0
-    }
-    Write-Host 'Checking original files and game.xdelta...'
-    $inputs = @{}
-    foreach ($row in $m.files) { $inputs[$row.source] = Find-Source $row }
-    $delta = Safe-Path $PSScriptRoot $m.bundle.patch.path
-    Assert-File $delta $m.bundle.patch
-    if ($UpdateNsp) {
-        Assert-File (Resolve-Path -LiteralPath $UpdateNsp).Path $m.control.source
-        Assert-File (Safe-Path $PSScriptRoot $m.control.patch) $m.control.delta
-    }
-    if (Test-Path -LiteralPath $stage) {
-        $stageMarker = Join-Path $stage 'package-id.json'
-        if (!(Test-Path -LiteralPath $stageMarker -PathType Leaf)) { throw 'Unrecognized staging folder; choose another -Out path' }
-        $old = Get-Content -LiteralPath $stageMarker -Raw -Encoding UTF8 | ConvertFrom-Json
-        if ($old.package_sha256 -ne $packageHash -or $old.layout -ne $Layout -or $old.source -ne $sourceRoot) { throw 'Staging folder belongs to another installation' }
-    } else {
-        New-Item -ItemType Directory -Path $stage | Out-Null
-        Save-JSON (Join-Path $stage 'package-id.json') $marker
-    }
-    $sourceBundle = Safe-Path $stage '.original-stream.bin'
-    if (!(Test-File $sourceBundle $m.bundle.source)) {
-        Write-Host 'Preparing original file stream (byte copy only)...'
-        $temporary = Safe-Path $stage '.original-stream.bin.partial'
-        $writer = [IO.File]::Open($temporary, [IO.FileMode]::Create, [IO.FileAccess]::Write, [IO.FileShare]::None)
-        try {
-            foreach ($row in $m.files) {
-                if ($writer.Position -ne $row.source_offset) { throw 'Invalid source stream order' }
-                $reader = [IO.File]::OpenRead($inputs[$row.source])
-                try { $reader.CopyTo($writer, 8 * 1024 * 1024) } finally { $reader.Dispose() }
-            }
-        } finally { $writer.Dispose() }
-        Assert-File $temporary $m.bundle.source
-        Move-Item -LiteralPath $temporary -Destination $sourceBundle -Force
-    }
-    Write-Host 'Applying game.xdelta...'
-    $info = New-Object Diagnostics.ProcessStartInfo
-    $info.FileName = $exe
-    $info.Arguments = '-d -c -s "' + $sourceBundle + '" "' + $delta + '"'
-    $info.UseShellExecute = $false
-    $info.CreateNoWindow = $true
-    $info.RedirectStandardOutput = $true
-    $info.RedirectStandardError = $true
-    $decoder = New-Object Diagnostics.Process
-    $decoder.StartInfo = $info
-    if (!$decoder.Start()) { throw 'Could not start xdelta3' }
-    $decoderStarted = $true
-    $stderrTask = $decoder.StandardError.ReadToEndAsync()
-    $decoded = $decoder.StandardOutput.BaseStream
-    $wholeHasher = [Security.Cryptography.SHA256]::Create()
-    $offset = [long]0
-    try {
-        foreach ($row in $m.files) {
-            if ($offset -ne $row.target_offset) { throw 'Invalid target stream order' }
-            $primary = Target-Path $stage $row.destinations[0]
-            New-Item -ItemType Directory -Force -Path ([IO.Path]::GetDirectoryName($primary)) | Out-Null
-            $reuse = Test-File $primary $row.output
-            $partial = $null
-            if (!$reuse) {
-                $partial = Safe-Path ([IO.Path]::GetDirectoryName($primary)) ([IO.Path]::GetFileName($primary) + '.partial')
-            }
-            Copy-DecodedFile $decoded $row.output.size $partial $row.output $wholeHasher
-            if (!$reuse) { Move-Item -LiteralPath $partial -Destination $primary -Force }
-            foreach ($relative in @($row.destinations | Select-Object -Skip 1)) {
-                $secondary = Target-Path $stage $relative
-                if (!(Test-File $secondary $row.output)) {
-                    New-Item -ItemType Directory -Force -Path ([IO.Path]::GetDirectoryName($secondary)) | Out-Null
-                    if (Test-Path -LiteralPath $secondary) { Remove-Item -LiteralPath $secondary }
-                    try { New-Item -ItemType HardLink -Path $secondary -Target $primary -ErrorAction Stop | Out-Null }
-                    catch { Copy-Item -LiteralPath $primary -Destination $secondary }
-                    Assert-File $secondary $row.output
-                }
-            }
-            $offset += $row.output.size
-            $completed++
-            Save-JSON $diagnostic ([ordered]@{ result='RUNNING'; version='0.93'; completed=$completed; total=@($m.files).Count; item=$row.source })
-            Write-Host "[$completed/$(@($m.files).Count)] verified $($row.source)"
-        }
-        if ($decoded.ReadByte() -ne -1) { throw 'Unexpected extra xdelta output' }
-        $decoder.WaitForExit()
-        $errorText = $stderrTask.GetAwaiter().GetResult()
-        if ($decoder.ExitCode -ne 0) { throw "xdelta failed (exit $($decoder.ExitCode)): $errorText" }
-        $wholeHasher.TransformFinalBlock((New-Object byte[] 0), 0, 0) | Out-Null
-        $wholeHash = [BitConverter]::ToString($wholeHasher.Hash).Replace('-', '').ToLowerInvariant()
-        if ($offset -ne $m.bundle.output.size -or $wholeHash -ne $m.bundle.output.sha256) { throw 'Final decoded stream mismatch' }
-    } finally { $wholeHasher.Dispose() }
-    foreach ($target in $m.targets) { Assert-File (Target-Path $stage $target.path) $target }
-    if ($UpdateNsp) { Invoke-Control $UpdateNsp (Join-Path $stage $m.control.target_name) $m }
-    Remove-Item -LiteralPath $sourceBundle
-    $report = [ordered]@{ result='PASS'; version='0.93'; content_version='0.93'; package_sha256=$packageHash; layout=$Layout; verified_files=@($m.targets).Count; exact_verified_v093_output=$true; files=$m.targets; powershell=$PSVersionTable.PSVersion.ToString() }
-    Save-JSON (Join-Path $stage 'install_report.json') $report
-    [IO.Directory]::Move($stage, $destination)
-    Save-JSON $diagnostic $report
-    Write-Host "PASS: all $(@($m.targets).Count) game files match v0.93. Output: $destination"
-} catch {
-    if ($diagnostic) { Save-JSON $diagnostic ([ordered]@{ result='FAILED'; version='0.93'; completed=$completed; error=$_.Exception.Message }) }
-    Write-Error -ErrorAction Continue $_
-    if ($stage) { Write-Host "Incomplete files are kept for resume: $stage" }
-    exit 1
-} finally {
-    if ($decoder) { if ($decoderStarted -and !$decoder.HasExited) { $decoder.Kill(); $decoder.WaitForExit() }; $decoder.Dispose() }
-    if ($lock) { $lock.Dispose() }
-    $env:XDELTA = $savedXdelta
-}
+function Hash-File([string]$p){$s=[IO.File]::OpenRead($p);$h=[Security.Cryptography.SHA256]::Create();try{return [BitConverter]::ToString($h.ComputeHash($s)).Replace('-','').ToLowerInvariant()}finally{$s.Dispose();$h.Dispose()}}
+function Assert-File([string]$p,$spec){if(!(Test-Path -LiteralPath $p -PathType Leaf)){throw "File missing: $p"};if((Get-Item -LiteralPath $p).Length -ne $spec.size -or (Hash-File $p) -ne $spec.sha256){throw "Wrong file version or damaged file: $p"}}
+function Pick([string]$title){$d=New-Object System.Windows.Forms.OpenFileDialog;$d.Title=$title;$d.Filter='Nintendo Switch package (*.nsp)|*.nsp';if($d.ShowDialog() -ne 'OK'){throw 'Cancelled'};return $d.FileName}
+function Save-Json([string]$p,$data){[IO.File]::WriteAllText($p,($data|ConvertTo-Json -Depth 8),(New-Object Text.UTF8Encoding($false)))}
+$lock=$null;$oldXdelta=$env:XDELTA
+try{
+ $env:XDELTA=$null
+ $manifest=Join-Path $PSScriptRoot 'manifest.json';$m=Get-Content -LiteralPath $manifest -Raw -Encoding UTF8|ConvertFrom-Json
+ if($m.version -ne '1.0' -or $m.schema -ne 'two-nsp-xdelta-v1'){throw 'Wrong package manifest'}
+ if(!$BaseNsp -or !$UpdateNsp -or !$Out){Add-Type -AssemblyName System.Windows.Forms}
+ if(!$BaseNsp){$BaseNsp=Pick '1/3 - Select Japanese BASE NSP (v0)'}
+ if(!$UpdateNsp){$UpdateNsp=Pick '2/3 - Select UPDATE NSP (v786432 / 1.12.0)'}
+ if(!$Out){$d=New-Object System.Windows.Forms.SaveFileDialog;$d.Title='3/3 - Save Korean v1.0 NSP';$d.Filter='Nintendo Switch package (*.nsp)|*.nsp';$d.FileName=$m.output.name;if($d.ShowDialog() -ne 'OK'){throw 'Cancelled'};$Out=$d.FileName}
+ $BaseNsp=(Resolve-Path -LiteralPath $BaseNsp).Path;$UpdateNsp=(Resolve-Path -LiteralPath $UpdateNsp).Path;$Out=[IO.Path]::GetFullPath($Out)
+ if($Out -eq $BaseNsp -or $Out -eq $UpdateNsp){throw 'Output cannot overwrite an input'}
+ if([IO.Path]::GetExtension($Out) -ne '.nsp'){throw 'Output must be an .nsp file'}
+ $exe=Join-Path $PSScriptRoot 'tools/xdelta3.exe';$delta=Join-Path $PSScriptRoot 'patch/game.xdelta'
+ Write-Host '1/4 Checking base, update and patch hashes...';Assert-File $BaseNsp $m.inputs.base;Assert-File $UpdateNsp $m.inputs.update;Assert-File $exe $m.tool;Assert-File $delta $m.delta
+ if(Test-Path -LiteralPath $Out){Assert-File $Out $m.output;Write-Host "PASS: existing output verified: $Out";exit 0}
+ $parent=[IO.Path]::GetDirectoryName($Out)
+ $stage=$Out+'.v1-work';$marker=Join-Path $stage 'owner.json';$identity=Hash-File $manifest
+ $walk=$stage;while($walk){if(Test-Path -LiteralPath $walk){if(((Get-Item -LiteralPath $walk -Force).Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0){throw 'Links/junctions are not supported for output'}};$walk=[IO.Path]::GetDirectoryName($walk)}
+ [IO.Directory]::CreateDirectory($parent)|Out-Null
+ if(Test-Path -LiteralPath $stage){if(!(Test-Path -LiteralPath $marker)){throw 'Work folder exists without installer ownership'};$prior=Get-Content -LiteralPath $marker -Raw -Encoding UTF8|ConvertFrom-Json;if($prior.package -ne $identity -or $prior.output -ne $Out){throw 'Work folder belongs to another patch'}}else{[IO.Directory]::CreateDirectory($stage)|Out-Null;Save-Json $marker @{package=$identity;output=$Out}}
+ $lock=[IO.File]::Open((Join-Path $stage 'install.lock'),'OpenOrCreate','ReadWrite','None')
+ $source=Join-Path $stage 'source.bundle';$sourceOk=Join-Path $stage 'source.verified.json';$partial=Join-Path $stage 'output.partial'
+ foreach($p in @($source,$sourceOk,$partial)){if((Test-Path -LiteralPath $p) -and (((Get-Item -LiteralPath $p -Force).Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0)){throw 'Linked temporary file rejected'}}
+ if(Test-Path -LiteralPath $sourceOk){Assert-File $source $m.source_bundle}else{
+  Write-Host '2/4 Preparing the two original files...';$w=[IO.File]::Open($source,'Create','Write','None');$done=[long]0;$buf=New-Object byte[] (8MB)
+  try{foreach($p in @($BaseNsp,$UpdateNsp)){$r=[IO.File]::OpenRead($p);try{while(($n=$r.Read($buf,0,$buf.Length)) -gt 0){$w.Write($buf,0,$n);$done+=$n;Write-Progress -Activity 'Preparing source' -PercentComplete ($done*100.0/$m.source_bundle.size)}}finally{$r.Dispose()}}}finally{$w.Dispose()}
+  Assert-File $source $m.source_bundle;Save-Json $sourceOk @{sha256=$m.source_bundle.sha256}
+ }
+ Write-Host '3/4 Applying xdelta (this can take several minutes)...'
+ & $exe -f -d -s $source $delta $partial
+ if($LASTEXITCODE -ne 0){throw "xdelta failed (exit $LASTEXITCODE). Keep the work folder and run again."}
+ Write-Host '4/4 Verifying the complete output...';Assert-File $partial $m.output
+ [IO.File]::Move($partial,$Out)
+ Save-Json ($Out+'.installation.json') @{version='1.0';result='PASS';base_sha256=$m.inputs.base.sha256;update_sha256=$m.inputs.update.sha256;output_sha256=$m.output.sha256;package_sha256=$identity;powershell=$PSVersionTable.PSVersion.ToString();output=$Out}
+ # Delete only the installer-owned temporary source file after successful validation.
+ [IO.File]::Delete($source);[IO.File]::Delete($sourceOk)
+ Write-Host "PASS: $Out"
+}catch{Write-Host ('FAILED: '+$_.Exception.Message) -ForegroundColor Red;exit 1}finally{if($lock){$lock.Dispose()};$env:XDELTA=$oldXdelta}
