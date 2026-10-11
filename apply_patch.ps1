@@ -10,11 +10,11 @@ $lock=$null;$oldXdelta=$env:XDELTA
 try{
  $env:XDELTA=$null
  $manifest=Join-Path $PSScriptRoot 'manifest.json';$m=Get-Content -LiteralPath $manifest -Raw -Encoding UTF8|ConvertFrom-Json
- if($m.version -ne '1.0' -or $m.schema -ne 'two-nsp-xdelta-v1'){throw 'Wrong package manifest'}
+ if($m.version -ne '1.01' -or $m.schema -ne 'two-nsp-xdelta-v1'){throw 'Wrong package manifest'}
  if(!$BaseNsp -or !$UpdateNsp -or !$Out){Add-Type -AssemblyName System.Windows.Forms}
  if(!$BaseNsp){$BaseNsp=Pick '1/3 - Select Japanese BASE NSP (v0)'}
  if(!$UpdateNsp){$UpdateNsp=Pick '2/3 - Select UPDATE NSP (v786432 / 1.12.0)'}
- if(!$Out){$d=New-Object System.Windows.Forms.SaveFileDialog;$d.Title='3/3 - Save Korean v1.0 NSP';$d.Filter='Nintendo Switch package (*.nsp)|*.nsp';$d.FileName=$m.output.name;if($d.ShowDialog() -ne 'OK'){throw 'Cancelled'};$Out=$d.FileName}
+ if(!$Out){$d=New-Object System.Windows.Forms.SaveFileDialog;$d.Title='3/3 - Save Korean v1.01 NSP';$d.Filter='Nintendo Switch package (*.nsp)|*.nsp';$d.FileName=$m.output.name;if($d.ShowDialog() -ne 'OK'){throw 'Cancelled'};$Out=$d.FileName}
  $BaseNsp=(Resolve-Path -LiteralPath $BaseNsp).Path;$UpdateNsp=(Resolve-Path -LiteralPath $UpdateNsp).Path;$Out=[IO.Path]::GetFullPath($Out)
  if($Out -eq $BaseNsp -or $Out -eq $UpdateNsp){throw 'Output cannot overwrite an input'}
  if([IO.Path]::GetExtension($Out) -ne '.nsp'){throw 'Output must be an .nsp file'}
@@ -39,7 +39,7 @@ try{
  if($LASTEXITCODE -ne 0){throw "xdelta failed (exit $LASTEXITCODE). Keep the work folder and run again."}
  Write-Host '4/4 Verifying the complete output...';Assert-File $partial $m.output
  [IO.File]::Move($partial,$Out)
- Save-Json ($Out+'.installation.json') @{version='1.0';result='PASS';base_sha256=$m.inputs.base.sha256;update_sha256=$m.inputs.update.sha256;output_sha256=$m.output.sha256;package_sha256=$identity;powershell=$PSVersionTable.PSVersion.ToString();output=$Out}
+ Save-Json ($Out+'.installation.json') @{version='1.01';result='PASS';base_sha256=$m.inputs.base.sha256;update_sha256=$m.inputs.update.sha256;output_sha256=$m.output.sha256;package_sha256=$identity;powershell=$PSVersionTable.PSVersion.ToString();output=$Out}
  # Delete only the installer-owned temporary source file after successful validation.
  [IO.File]::Delete($source);[IO.File]::Delete($sourceOk)
  Write-Host "PASS: $Out"
