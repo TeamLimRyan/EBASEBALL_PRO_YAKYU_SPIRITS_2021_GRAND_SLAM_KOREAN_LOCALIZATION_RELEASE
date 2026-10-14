@@ -1,12 +1,12 @@
-# 프로야구 스피리츠 2021 그랜드슬램 한국어 패치 v1.01
+# 프로야구 스피리츠 2021 그랜드슬램 한국어 패치 v1.02
 
 **일본어판 베이스 NSP와 업데이트 NSP 두 파일을 선택하면 한국어 NSP를 만듭니다.** 파일을 직접 추출할 필요가 없으며, 패치 설치기에 키·Python·.NET을 별도로 준비할 필요도 없습니다. Windows 10/11의 기본 Windows PowerShell과 동봉된 xdelta3를 사용합니다.
 
-[v1.01 다운로드](https://github.com/TeamLimRyan/EBASEBALL_PRO_YAKYU_SPIRITS_2021_GRAND_SLAM_KOREAN_LOCALIZATION_RELEASE/releases/tag/v1.01) · [패치 ZIP](https://github.com/TeamLimRyan/EBASEBALL_PRO_YAKYU_SPIRITS_2021_GRAND_SLAM_KOREAN_LOCALIZATION_RELEASE/releases/download/v1.01/eBASEBALL_2021_Korean_v1.01_xdelta.zip)
+[v1.02 다운로드](https://github.com/TeamLimRyan/EBASEBALL_PRO_YAKYU_SPIRITS_2021_GRAND_SLAM_KOREAN_LOCALIZATION_RELEASE/releases/tag/v1.02) · [패치 ZIP](https://github.com/TeamLimRyan/EBASEBALL_PRO_YAKYU_SPIRITS_2021_GRAND_SLAM_KOREAN_LOCALIZATION_RELEASE/releases/download/v1.02/eBASEBALL_2021_Korean_v1.02_xdelta.zip)
 
 ## 설치
 
-1. 릴리스의 `eBASEBALL_2021_Korean_v1.01_xdelta.zip`을 새 폴더에 전부 풉니다.
+1. 릴리스의 `eBASEBALL_2021_Korean_v1.02_xdelta.zip`을 새 폴더에 전부 풉니다.
 2. `install.cmd`를 실행합니다.
 3. 일본어판 **베이스 NSP(v0, 0100F88012E34000)**를 선택합니다.
 4. **업데이트 NSP(v786432 / 게임 1.12.0, 0100F88012E34800)**를 선택합니다.
@@ -17,7 +17,7 @@
 명령줄에서도 실행할 수 있습니다.
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File .\apply_patch.ps1 -BaseNsp "D:\게임\베이스.nsp" -UpdateNsp "D:\게임\업데이트.nsp" -Out "D:\게임\한국어_v1.01.nsp"
+powershell -NoProfile -ExecutionPolicy Bypass -File .\apply_patch.ps1 -BaseNsp "D:\게임\베이스.nsp" -UpdateNsp "D:\게임\업데이트.nsp" -Out "D:\게임\한국어_v1.02.nsp"
 ```
 
 패치 형식은 xdelta/VCDIFF입니다. 베이스·업데이트를 정해진 순서로 결합한 입력에 적용하므로, 일반 xdelta GUI에 둘 중 한 파일만 넣어서는 적용되지 않습니다. 동봉 설치기가 결합과 검증을 자동으로 처리합니다.
@@ -39,26 +39,21 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\apply_patch.ps1 -BaseNsp "
 | 일본어 베이스 v0 | 6276644925 | `06a72d6c12a6028ca36d401aa4d6f8f59a56bad20ba8b43bf281b76c9d56f5ff` |
 | 일본어 업데이트 v786432 | 1603224632 | `40fd8c9284d45909b03f804653e4ee038d7401c30b34b5726231ce121d244f4a` |
 
-## v1.01 변경 내용
+## v1.02 변경 내용
 
-- 고시엔의 얼굴 유형 선택 시 종료되던 메모리 쓰기 문제를 수정했습니다.
-- 프로스피 입문의 주루 안내, 해금 조건, 완료 보상 문구를 한국어로 수정했습니다.
-- 경기 결과의 `ゴ` 표기를 `땅볼`로 수정했습니다.
-- 한국 대표팀 24명의 체형을 2021년 KBO 가이드북의 신장·체중 기준으로 조정했습니다. 김진욱의 키를 185cm, 양의지의 키를 179cm로 바로잡았습니다.
-- v1.0의 번역·글꼴·대표팀 명단·기존 수정 사항을 포함합니다.
+- 홈런 뒤 연출 중 간헐적으로 종료되는 원인을 수정했습니다. 게임 내부 분기표의 숫자 두 항목이 번역 대상으로 잘못 분류돼 실행 흐름이 바뀌던 문제였습니다.
+- 2022·2021 프로그램에서 해당 분기표를 각각 원래 값으로 복원했습니다. 실행 파일의 압축 해제된 내용은 시즌별 2바이트만 변경했습니다.
+- v1.01의 번역·이미지·글꼴·얼굴 편집 수정·입문 안내·땅볼 표기·한국 대표팀 명단과 체형 보정은 유지했습니다.
 
-v1.0 이용자도 동일한 **일본어 원본 두 파일**로 새 결과를 만듭니다. 기존 한국어 NSP를 입력하지 마세요. 패치 버전 1.01과 게임 자체의 버전 표시(2022 프로그램 1.12.0)는 별개입니다.
+기존 사용자도 동일한 **일본어 원본 두 파일**로 새 결과를 만듭니다. 이전 한국어 NSP를 입력하지 마세요. 패치 버전 1.02와 게임 자체의 버전 표시(2022 프로그램 1.12.0)는 별개입니다.
 
 ## 확인 범위와 제한
 
-수정 코드와 실제 로드된 실행 파일을 대조하고 에뮬레이터 화면을 확인했습니다. 원본 두 파일로 배포 설치기를 실행해 완성 파일의 전체 SHA-256을 검증했습니다. 상세 결과는 `verification.json`에 기록합니다.
-
-- 얼굴 편집, 입문 안내 4종, 실제 경기의 땅볼 결과 표기를 확인했습니다. 입문 보상·해금 문구는 두 시즌의 실제 문자열 선택 코드를 전수 시험했으며 모든 과제를 직접 완료한 검증은 아닙니다.
-- 한국 대표팀 체형은 당시 신장·체중 비율을 게임의 마른형·표준형·근육형·중량형으로 근사한 설정입니다. 실제 신체 구성 측정값이나 사진을 그대로 재현한 모델이 아닙니다. 선수별 참고값은 `ROSTER_KO.md`에 있습니다. 능력치는 유지했습니다.
-- 경기 중 간헐적 종료 제보는 해결 확정하지 않았습니다. 추가 제보가 오면 재조사합니다.
-- PC Eden 0.2.1/OpenGL로 확인했습니다. Switch 본체와 Android에서 별도 자동 검증한 결과는 없습니다.
-- 설명서 콘텐츠는 양쪽 시즌에 포함돼 있으나, Windows 웹 앱릿 제한 때문에 실기 설명서 오류의 해결 여부를 자동 시험으로 확정하지 않았습니다.
-- 장기 시즌 전체 진행을 검증한 것은 아닙니다. 이전부터 남은 사용자 선수 기본 이름 등 일부 미번역 항목이 있을 수 있습니다.
+- 제보 로그와 동일한 중단 위치와 잘못된 접근 주소를 기존 버전의 실제 ARM64 명령으로 재현했습니다. 같은 시험에서 수정본은 원래 분기로 복귀했습니다.
+- 두 시즌 24개 분기 선택·범위 경계·주소 배치 시험, 10,284개 분기표의 원본 대조, NSO 재압축·재판독, 컨테이너 무결성, xdelta 설치 결과의 전체 해시를 검증했습니다.
+- 이번 버전의 실제 게임 플레이·에뮬레이터 실행 시험은 사용자 요청으로 생략했습니다. Switch 실기 확인은 제작자가 직접 진행합니다. 자동 명령 시험을 실기 플레이 통과로 표시하지 않습니다.
+- 제보의 원인에 대한 수정이며 모든 형태의 게임 종료나 장기 시즌 전체 진행을 검증한 것은 아닙니다.
+- 체형 보정은 신장·체중 비율을 게임의 네 가지 프리셋으로 근사한 설정입니다. 기존의 일부 미번역 항목과 설명서 웹 앱릿 제약은 남아 있습니다.
 
 ## 중단·재실행·되돌리기
 

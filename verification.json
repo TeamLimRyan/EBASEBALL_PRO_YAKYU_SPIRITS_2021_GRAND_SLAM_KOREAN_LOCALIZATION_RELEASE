@@ -1,6 +1,6 @@
 {
-  "version": "1.01",
-  "result": "PASS_WITH_DOCUMENTED_LIMITATIONS",
+  "version": "1.02",
+  "result": "PASS_AUTOMATED_RUNTIME_WAIVED_BY_OWNER",
   "inputs": {
     "base": {
       "size": 6276644925,
@@ -12,56 +12,151 @@
     }
   },
   "output": {
-    "name": "eBASEBALL_2021_Korean_v1.01.nsp",
+    "name": "eBASEBALL_2021_Korean_v1.02.nsp",
     "size": 8771794288,
-    "sha256": "8577bff8cb38c9dca5c9b9683ca60e969799629a716a57e023af880ca4810709"
+    "sha256": "e0c2f7f544e95d3f01fbe4f070a283e49a54dfcc4025b0994e5a625f832ab6a9"
   },
   "delta": {
     "status": "PASS",
-    "sha256": "5f337a88ea6fec9e7c413e7969ca287a52051461a56b4ff1141e488fa743f83b",
-    "size": 972418237
+    "sha256": "861f5ee11d0a5466ef5bdb5c812089b6e86881291ba3082953481bff6f4b8c1b",
+    "size": 972418238
   },
+  "issue": "Intermittent termination after home-run presentation; numeric branch-table entries had been translated as display text.",
+  "changes": [
+    {
+      "program": "effective",
+      "main_sha256": "8662161106e369431ce027a4f5c42d018a365c2e300eef90aac65c2bc8f0e8e5",
+      "changed_decompressed_bytes": 2,
+      "writes": [
+        {
+          "offset": 30747214,
+          "before": "9357",
+          "after": "9540",
+          "reason": "Restore numeric dispatch entry misclassified as display text"
+        }
+      ],
+      "all_other_decompressed_bytes_unchanged": true,
+      "deterministic_nso": true
+    },
+    {
+      "program": "program1",
+      "main_sha256": "4b04520893b5c7aa3c02a6a0056fcceb74a5b212946776941c76ed098b0d4571",
+      "changed_decompressed_bytes": 2,
+      "writes": [
+        {
+          "offset": 30335458,
+          "before": "8a50",
+          "after": "9844",
+          "reason": "Restore numeric dispatch entry misclassified as display text"
+        }
+      ],
+      "all_other_decompressed_bytes_unchanged": true,
+      "deterministic_nso": true
+    }
+  ],
+  "native_reproduction": {
+    "fixture": "Synthetic memory fixture executing unchanged native ARM64 instructions; no callee stubs. Not a full gameplay test.",
+    "v101_same_fault_cases": 4,
+    "reported_pc_main_offset": "0x185d984",
+    "reported_invalid_address": "0x30000026d",
+    "original_correct_dispatch_cases": 4,
+    "candidate_correct_dispatch_cases": 4,
+    "evidence_sha256": "caaef7e749c829b5d5b66d3c8f7f2313b78c9c0070ce8728337d697d617c68d1"
+  },
+  "dispatch_regression": {
+    "cases": 24,
+    "seasons": 2,
+    "selectors": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      4294967295
+    ],
+    "aslr_slides": 2,
+    "status": "PASS"
+  },
+  "numeric_data_audit": {
+    "bounded_tables": 10284,
+    "status": "PASS",
+    "unbounded_candidates_sampled": 1337,
+    "unbounded_sample_scope": "First 16 entries sampled; table extent not proven for these candidates.",
+    "policy": "Occurrence-specific numeric preservation; actual visible nose-label translations retained."
+  },
+  "container_sections": [
+    {
+      "program": "effective",
+      "main_sha256": "8662161106e369431ce027a4f5c42d018a365c2e300eef90aac65c2bc8f0e8e5",
+      "nca_sha256": "cfe0f2069dc1faabfe22a3f9da43751d7025bf7018123cc9e4311583992f65d4",
+      "other_encrypted_sections_unchanged": [
+        {
+          "section": 1,
+          "bytes": 2411970560,
+          "encrypted_sha256": "1d1b4ea165a8bc556e96c69091e7c5cfe19a5b5ea23dbf09be731cb0ebe51f0d"
+        }
+      ]
+    },
+    {
+      "program": "program1",
+      "main_sha256": "4b04520893b5c7aa3c02a6a0056fcceb74a5b212946776941c76ed098b0d4571",
+      "nca_sha256": "1ed5dbb5b44b031856c29ac3a8f9946a7ef692d75f2704203fb7e67f13481950",
+      "other_encrypted_sections_unchanged": [
+        {
+          "section": 1,
+          "bytes": 3244032,
+          "encrypted_sha256": "b92fc6d2c2577887565a34b421de22d778b71bae960e9012aaf6a50297aba308"
+        },
+        {
+          "section": 2,
+          "bytes": 98304,
+          "encrypted_sha256": "cf0f56c37d78b4896b72a99e14f526fe6ffd3ac2b4780f49ffcfdbf468100942"
+        }
+      ]
+    }
+  ],
+  "container_integrity": "PASS; both ExeFS and CNMT catalogs verified; all unchanged PFS0 entries independently hashed",
   "installer_tests": [
     {
       "name": "wrong_base",
       "exit_code": 1,
       "expected": false,
-      "seconds": 0.656731367111206
+      "seconds": 0.47520947456359863
     },
     {
       "name": "swapped_inputs",
       "exit_code": 1,
       "expected": false,
-      "seconds": 0.6421492099761963
+      "seconds": 0.45800137519836426
     },
     {
       "name": "protect_original",
       "exit_code": 1,
       "expected": false,
-      "seconds": 0.574472188949585
+      "seconds": 0.4409959316253662
     },
     {
       "name": "full_install",
       "exit_code": 0,
       "expected": true,
-      "seconds": 338.87276339530945
+      "seconds": 339.1330361366272
     },
     {
       "name": "existing_output_revalidation",
       "exit_code": 0,
       "expected": true,
-      "seconds": 92.94107794761658
+      "seconds": 69.73097944259644
     },
     {
       "name": "reject_unrelated_output",
       "exit_code": 1,
       "expected": false,
-      "seconds": 45.202165603637695
+      "seconds": 31.268648862838745
     },
     {
       "name": "independent_output_hash",
       "status": "PASS",
-      "sha256": "8577bff8cb38c9dca5c9b9683ca60e969799629a716a57e023af880ca4810709",
+      "sha256": "e0c2f7f544e95d3f01fbe4f070a283e49a54dfcc4025b0994e5a625f832ab6a9",
       "bytes": 8771794288
     }
   ],
@@ -75,116 +170,21 @@
     "target_bytes": 8771794288,
     "literal_data_bytes": 972349747,
     "literal_percent": 11.084958391354379,
-    "patch_sha256": "5f337a88ea6fec9e7c413e7969ca287a52051461a56b4ff1141e488fa743f83b",
+    "patch_sha256": "861f5ee11d0a5466ef5bdb5c812089b6e86881291ba3082953481bff6f4b8c1b",
     "scope": "Framing/source bounds and literal-byte accounting. Public file is a source-dependent delta, not a complete container."
   },
-  "features": {
-    "face": {
-      "status": "PASS_EMULATOR",
-      "evidence_sha256": "a2cbb2ee5033bb83fa78f2cf316e7398f47c03cdb7e6e0b2aa122ad39eeda3d3",
-      "actions": [
-        "open editor",
-        "type 1",
-        "type 2",
-        "type 6",
-        "return"
-      ],
-      "readonly_write_events": 0
-    },
-    "practice": {
-      "status": "PASS_NATIVE_AND_MENU_RUNTIME",
-      "evidence_sha256": "5507521cee411f1296356c2ccfb1bcd8c3d772730c332cfc263a9f1f2aa126f6",
-      "native_cases": 60,
-      "menu_hints": 4,
-      "full_reward_completion_playthrough": false
-    },
-    "ground_ball": {
-      "status": "PASS_NATIVE_AND_EMULATOR_DISPLAY",
-      "evidence_sha256": "06367428baf12b47fdeb41be80a8d40eb717050243644aeb0365ea574e837704",
-      "native_cases": 936,
-      "negative_controls": 12,
-      "visible_result": "유땅볼"
-    },
-    "korea_body": {
-      "players": 24,
-      "native_cases": 136,
-      "save_readback_records_2022": 48,
-      "model_previews": 4,
-      "source_pdf_sha256": "8815fc0e0c3663a64fc6bd3389b0732e5719601849dc6c1f74a74327611af3dc",
-      "evidence_sha256": "6189ac84cb1eaee87a5e0e459861bf26477043e05ffc7be5743bc4e146a450ad",
-      "height_corrections": {
-        "김진욱": 185,
-        "양의지": 179
-      },
-      "weight": "Reference for four existing body presets only",
-      "approximation": "Height/weight ratio; not measured body composition"
-    }
+  "runtime": {
+    "status": "SKIPPED_BY_OWNER",
+    "physical_switch": "OWNER_TEST_PENDING",
+    "emulator_gameplay": "NOT_RUN_FOR_V1.02",
+    "reason": "Owner requested publication after automated checks and will perform hardware testing."
   },
-  "build_chain": [
-    {
-      "version": "effective",
-      "previous_fixes_sha256": "fc1567d51ed6e1195b2f8589b720c9ef958fda46991ab1a8a178ea9d4029a6dc",
-      "final_main_sha256": "88d6a54ea2278ac4827cb9b43ef543eb97f4c8b1abb374f7e38f6aa95c04fe14",
-      "prior_fix_regions_unchanged": true,
-      "body_native_cases": 68,
-      "abilities_unchanged": true
-    },
-    {
-      "version": "program1",
-      "previous_fixes_sha256": "a9c1bdc2b1d6984c3f0ad97f0a9c60a7245eb3e107a785d254fcf3a2418be5e8",
-      "final_main_sha256": "acb837582a4f06e4ec60038ed2557adc84a584dc4b6b34c1551021235f75ee35",
-      "prior_fix_regions_unchanged": true,
-      "body_native_cases": 68,
-      "abilities_unchanged": true
-    }
-  ],
-  "container_runtime": {
-    "status": "PASS",
-    "run": "fb-r4-final-2021-02",
-    "emulator": "Eden 0.2.1",
-    "renderer": "OpenGL",
-    "container_sha256": "8577bff8cb38c9dca5c9b9683ca60e969799629a716a57e023af880ca4810709",
-    "nso_overlay": false,
-    "loaded_programs": [
-      {
-        "season": "2022",
-        "loaded_main_sha256": "88d6a54ea2278ac4827cb9b43ef543eb97f4c8b1abb374f7e38f6aa95c04fe14",
-        "matches_final_candidate": true
-      },
-      {
-        "season": "2021",
-        "loaded_main_sha256": "acb837582a4f06e4ec60038ed2557adc84a584dc4b6b34c1551021235f75ee35",
-        "matches_final_candidate": true
-      }
-    ],
-    "guest_panic": false,
-    "scenes": "Built NSP: 2022 season selector, 2021 program handoff, title, main menu, Korea national team native save generation",
-    "screenshots": [
-      {
-        "name": "fb-r4-final-2021-02_0040.00s.png",
-        "sha256": "1340da12d28790d5edae68b45afea025f4bb0e661bd845d479ed1305fdb61fc6"
-      },
-      {
-        "name": "fb-r4-final-2021-02_0177.31s.png",
-        "sha256": "38e3f6bcb1c67f155748bf07e21bafcb9e704c48d9c3325276b93cb2f8421237"
-      },
-      {
-        "name": "fb-r4-final-2021-02_0223.38s.png",
-        "sha256": "84ac9cbb86c76c58d2cf3296c52cbe16906e3b33347a37213ab4c2ffb128b368"
-      },
-      {
-        "name": "fb-r4-final-2021-02_0378.64s.png",
-        "sha256": "b2a16a2ab7de75b697cb1f33389c7c21180cde1e71057774c370095a45a1e8a4"
-      }
-    ],
-    "body_save_records_2021": 48,
-    "result_sha256": "96302d613552dfc0a7cc2d583ad15bc910fd91c8dcab473d27ea61261fabcaaf"
+  "inherited_v101": {
+    "verification_sha256": "20c5485e15a1c42b8d1a7f81d6ec5ce18c8598e724782aa756aeea094deb2857",
+    "preserved": "All prior translations, graphics, fonts, roster/body fixes; only the two numeric dispatch entries changed."
   },
   "limitations": [
-    "Intermittent game/home-run termination deferred by owner; not claimed fixed.",
-    "Body models approximate 2021 guidebook proportions in four existing game presets.",
-    "Practice rewards verified through native consumers; no full tutorial-completion playthrough.",
-    "Switch hardware and Android not separately tested.",
-    "No complete long-season test; prior offline web-applet limitation remains."
+    "No new physical-hardware or emulator gameplay test in this release.",
+    "The reproduced reported fault is fixed; unrelated crash classes and long-season play are not certified."
   ]
 }

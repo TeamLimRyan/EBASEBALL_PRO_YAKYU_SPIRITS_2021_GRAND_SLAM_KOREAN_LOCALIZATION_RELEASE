@@ -1,6 +1,6 @@
 {
   "schema": "two-nsp-xdelta-v1",
-  "version": "1.01",
+  "version": "1.02",
   "inputs": {
     "base": {
       "size": 6276644925,
@@ -16,9 +16,9 @@
     "sha256": "6ad3a8660c70480ee5aa5c491f2e086693dad80874efaadbd6cc7e7c21701b53"
   },
   "output": {
-    "name": "eBASEBALL_2021_Korean_v1.01.nsp",
+    "name": "eBASEBALL_2021_Korean_v1.02.nsp",
     "size": 8771794288,
-    "sha256": "8577bff8cb38c9dca5c9b9683ca60e969799629a716a57e023af880ca4810709"
+    "sha256": "e0c2f7f544e95d3f01fbe4f070a283e49a54dfcc4025b0994e5a625f832ab6a9"
   },
   "tool": {
     "size": 340992,
@@ -27,7 +27,7 @@
   },
   "delta": {
     "status": "PASS",
-    "sha256": "5f337a88ea6fec9e7c413e7969ca287a52051461a56b4ff1141e488fa743f83b",
-    "size": 972418237
+    "sha256": "861f5ee11d0a5466ef5bdb5c812089b6e86881291ba3082953481bff6f4b8c1b",
+    "size": 972418238
   }
 }
