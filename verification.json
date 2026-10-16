@@ -1,94 +1,26 @@
 {
-  "version": "1.02",
-  "result": "PASS_AUTOMATED_RUNTIME_WAIVED_BY_OWNER",
-  "inputs": {
-    "base": {
-      "size": 6276644925,
-      "sha256": "06a72d6c12a6028ca36d401aa4d6f8f59a56bad20ba8b43bf281b76c9d56f5ff"
-    },
-    "update": {
-      "size": 1603224632,
-      "sha256": "40fd8c9284d45909b03f804653e4ee038d7401c30b34b5726231ce121d244f4a"
-    }
-  },
-  "output": {
-    "name": "eBASEBALL_2021_Korean_v1.02.nsp",
-    "size": 8771794288,
-    "sha256": "e0c2f7f544e95d3f01fbe4f070a283e49a54dfcc4025b0994e5a625f832ab6a9"
-  },
-  "delta": {
-    "status": "PASS",
-    "sha256": "861f5ee11d0a5466ef5bdb5c812089b6e86881291ba3082953481bff6f4b8c1b",
-    "size": 972418238
-  },
-  "issue": "Intermittent termination after home-run presentation; numeric branch-table entries had been translated as display text.",
-  "changes": [
-    {
-      "program": "effective",
-      "main_sha256": "8662161106e369431ce027a4f5c42d018a365c2e300eef90aac65c2bc8f0e8e5",
-      "changed_decompressed_bytes": 2,
-      "writes": [
-        {
-          "offset": 30747214,
-          "before": "9357",
-          "after": "9540",
-          "reason": "Restore numeric dispatch entry misclassified as display text"
-        }
-      ],
-      "all_other_decompressed_bytes_unchanged": true,
-      "deterministic_nso": true
-    },
-    {
-      "program": "program1",
-      "main_sha256": "4b04520893b5c7aa3c02a6a0056fcceb74a5b212946776941c76ed098b0d4571",
-      "changed_decompressed_bytes": 2,
-      "writes": [
-        {
-          "offset": 30335458,
-          "before": "8a50",
-          "after": "9844",
-          "reason": "Restore numeric dispatch entry misclassified as display text"
-        }
-      ],
-      "all_other_decompressed_bytes_unchanged": true,
-      "deterministic_nso": true
-    }
-  ],
-  "native_reproduction": {
-    "fixture": "Synthetic memory fixture executing unchanged native ARM64 instructions; no callee stubs. Not a full gameplay test.",
-    "v101_same_fault_cases": 4,
-    "reported_pc_main_offset": "0x185d984",
-    "reported_invalid_address": "0x30000026d",
-    "original_correct_dispatch_cases": 4,
-    "candidate_correct_dispatch_cases": 4,
-    "evidence_sha256": "caaef7e749c829b5d5b66d3c8f7f2313b78c9c0070ce8728337d697d617c68d1"
-  },
-  "dispatch_regression": {
-    "cases": 24,
+  "version": "1.03",
+  "status": "AUTOMATED_PASS_RUNTIME_NOT_RUN",
+  "baseline": "v1.02",
+  "changes": {
     "seasons": 2,
-    "selectors": [
-      0,
-      1,
-      2,
-      3,
-      4,
-      4294967295
-    ],
-    "aslr_slides": 2,
-    "status": "PASS"
+    "scoped_text_references": 136,
+    "homerun_descriptor_slots": 8,
+    "Korean_particle_supported_syllables": 2351
   },
-  "numeric_data_audit": {
-    "bounded_tables": 10284,
-    "status": "PASS",
-    "unbounded_candidates_sampled": 1337,
-    "unbounded_sample_scope": "First 16 entries sampled; table extent not proven for these candidates.",
-    "policy": "Occurrence-specific numeric preservation; actual visible nose-label translations retained."
+  "native": {
+    "cases": 15552,
+    "slides": 2,
+    "negative_control": "Exact v1.02 native consumers reproduce the reported Japanese suffixes.",
+    "scope": "ARM64 summary consumers, bounded append, suffix generation and Korean particle scan execute natively under Unicorn. printf/libc and player-name provider are test stubs. This is not a full-game test.",
+    "evidence_sha256": "e80943771aa14fb671babc74af862379fda50dda357f248089c7b78f453ef3b1"
   },
-  "container_sections": [
+  "prior_numeric_crash_fix": "Preserved and rechecked against protected source data.",
+  "section_verification": [
     {
       "program": "effective",
-      "main_sha256": "8662161106e369431ce027a4f5c42d018a365c2e300eef90aac65c2bc8f0e8e5",
-      "nca_sha256": "cfe0f2069dc1faabfe22a3f9da43751d7025bf7018123cc9e4311583992f65d4",
+      "main_sha256": "2f24debc2d377c78f26aa9e484a6bcaee2b446996351caff94d983b29cbff4cc",
+      "nca_sha256": "0594947115f47d413fc2023e240eb2f365552d3240dacce6a5fa164e93d06b6e",
       "other_encrypted_sections_unchanged": [
         {
           "section": 1,
@@ -99,8 +31,8 @@
     },
     {
       "program": "program1",
-      "main_sha256": "4b04520893b5c7aa3c02a6a0056fcceb74a5b212946776941c76ed098b0d4571",
-      "nca_sha256": "1ed5dbb5b44b031856c29ac3a8f9946a7ef692d75f2704203fb7e67f13481950",
+      "main_sha256": "b468e43f0e69129c32f547d518478abb42685a5f5d053342b68b80572b573c31",
+      "nca_sha256": "46fc18cd30bbcb7536da1332f9a5e58671c46955af713aacec49df47d98edeab",
       "other_encrypted_sections_unchanged": [
         {
           "section": 1,
@@ -115,49 +47,50 @@
       ]
     }
   ],
-  "container_integrity": "PASS; both ExeFS and CNMT catalogs verified; all unchanged PFS0 entries independently hashed",
+  "container_sha256": "ec02ccb9f1892779c912c8018c8543a40fad57ea71fb581eb7373ba719098b1c",
+  "container_integrity": "PASS",
   "installer_tests": [
     {
       "name": "wrong_base",
       "exit_code": 1,
       "expected": false,
-      "seconds": 0.47520947456359863
+      "seconds": 0.4578993320465088
     },
     {
       "name": "swapped_inputs",
       "exit_code": 1,
       "expected": false,
-      "seconds": 0.45800137519836426
+      "seconds": 0.4119987487792969
     },
     {
       "name": "protect_original",
       "exit_code": 1,
       "expected": false,
-      "seconds": 0.4409959316253662
+      "seconds": 0.3710291385650635
     },
     {
       "name": "full_install",
       "exit_code": 0,
       "expected": true,
-      "seconds": 339.1330361366272
+      "seconds": 526.6346549987793
     },
     {
       "name": "existing_output_revalidation",
       "exit_code": 0,
       "expected": true,
-      "seconds": 69.73097944259644
+      "seconds": 67.40739893913269
     },
     {
       "name": "reject_unrelated_output",
       "exit_code": 1,
       "expected": false,
-      "seconds": 31.268648862838745
+      "seconds": 32.07189226150513
     },
     {
       "name": "independent_output_hash",
       "status": "PASS",
-      "sha256": "e0c2f7f544e95d3f01fbe4f070a283e49a54dfcc4025b0994e5a625f832ab6a9",
-      "bytes": 8771794288
+      "sha256": "ec02ccb9f1892779c912c8018c8543a40fad57ea71fb581eb7373ba719098b1c",
+      "bytes": 8771795824
     }
   ],
   "vcdiff": {
@@ -167,24 +100,20 @@
     "secondary_compressor": false,
     "windows": 1046,
     "source_windows": 934,
-    "target_bytes": 8771794288,
-    "literal_data_bytes": 972349747,
-    "literal_percent": 11.084958391354379,
-    "patch_sha256": "861f5ee11d0a5466ef5bdb5c812089b6e86881291ba3082953481bff6f4b8c1b",
+    "target_bytes": 8771795824,
+    "literal_data_bytes": 972351347,
+    "literal_percent": 11.084974690582811,
+    "patch_sha256": "b442923f2a93f09eef604f8a4c09301e73a957961580dd829161978c364604e8",
     "scope": "Framing/source bounds and literal-byte accounting. Public file is a source-dependent delta, not a complete container."
   },
   "runtime": {
-    "status": "SKIPPED_BY_OWNER",
-    "physical_switch": "OWNER_TEST_PENDING",
-    "emulator_gameplay": "NOT_RUN_FOR_V1.02",
-    "reason": "Owner requested publication after automated checks and will perform hardware testing."
+    "status": "NOT_RUN",
+    "visual_layout": "PENDING",
+    "physical_switch": "PENDING",
+    "emulator_gameplay": "PENDING"
   },
-  "inherited_v101": {
-    "verification_sha256": "20c5485e15a1c42b8d1a7f81d6ec5ce18c8598e724782aa756aeea094deb2857",
-    "preserved": "All prior translations, graphics, fonts, roster/body fixes; only the two numeric dispatch entries changed."
-  },
+  "release_authorization": "User explicitly requested v1.03 publication on 2026-10-16.",
   "limitations": [
-    "No new physical-hardware or emulator gameplay test in this release.",
-    "The reproduced reported fault is fixed; unrelated crash classes and long-season play are not certified."
+    "Native checks do not establish on-screen line wrapping, clipping or complete-match gameplay."
   ]
 }

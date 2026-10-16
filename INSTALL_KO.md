@@ -1,12 +1,12 @@
-# 프로야구 스피리츠 2021 그랜드슬램 한국어 패치 v1.02
+# 프로야구 스피리츠 2021 그랜드슬램 한국어 패치 v1.03
 
 **일본어판 베이스 NSP와 업데이트 NSP 두 파일을 선택하면 한국어 NSP를 만듭니다.** 파일을 직접 추출할 필요가 없으며, 패치 설치기에 키·Python·.NET을 별도로 준비할 필요도 없습니다. Windows 10/11의 기본 Windows PowerShell과 동봉된 xdelta3를 사용합니다.
 
-[v1.02 다운로드](https://github.com/TeamLimRyan/EBASEBALL_PRO_YAKYU_SPIRITS_2021_GRAND_SLAM_KOREAN_LOCALIZATION_RELEASE/releases/tag/v1.02) · [패치 ZIP](https://github.com/TeamLimRyan/EBASEBALL_PRO_YAKYU_SPIRITS_2021_GRAND_SLAM_KOREAN_LOCALIZATION_RELEASE/releases/download/v1.02/eBASEBALL_2021_Korean_v1.02_xdelta.zip)
+[v1.03 다운로드](https://github.com/TeamLimRyan/EBASEBALL_PRO_YAKYU_SPIRITS_2021_GRAND_SLAM_KOREAN_LOCALIZATION_RELEASE/releases/tag/v1.03) · [패치 ZIP](https://github.com/TeamLimRyan/EBASEBALL_PRO_YAKYU_SPIRITS_2021_GRAND_SLAM_KOREAN_LOCALIZATION_RELEASE/releases/download/v1.03/eBASEBALL_2021_Korean_v1.03_xdelta.zip)
 
 ## 설치
 
-1. 릴리스의 `eBASEBALL_2021_Korean_v1.02_xdelta.zip`을 새 폴더에 전부 풉니다.
+1. 릴리스의 `eBASEBALL_2021_Korean_v1.03_xdelta.zip`을 새 폴더에 전부 풉니다.
 2. `install.cmd`를 실행합니다.
 3. 일본어판 **베이스 NSP(v0, 0100F88012E34000)**를 선택합니다.
 4. **업데이트 NSP(v786432 / 게임 1.12.0, 0100F88012E34800)**를 선택합니다.
@@ -17,7 +17,7 @@
 명령줄에서도 실행할 수 있습니다.
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File .\apply_patch.ps1 -BaseNsp "D:\게임\베이스.nsp" -UpdateNsp "D:\게임\업데이트.nsp" -Out "D:\게임\한국어_v1.02.nsp"
+powershell -NoProfile -ExecutionPolicy Bypass -File .\apply_patch.ps1 -BaseNsp "D:\게임\베이스.nsp" -UpdateNsp "D:\게임\업데이트.nsp" -Out "D:\게임\한국어_v1.03.nsp"
 ```
 
 패치 형식은 xdelta/VCDIFF입니다. 베이스·업데이트를 정해진 순서로 결합한 입력에 적용하므로, 일반 xdelta GUI에 둘 중 한 파일만 넣어서는 적용되지 않습니다. 동봉 설치기가 결합과 검증을 자동으로 처리합니다.
@@ -39,21 +39,24 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\apply_patch.ps1 -BaseNsp "
 | 일본어 베이스 v0 | 6276644925 | `06a72d6c12a6028ca36d401aa4d6f8f59a56bad20ba8b43bf281b76c9d56f5ff` |
 | 일본어 업데이트 v786432 | 1603224632 | `40fd8c9284d45909b03f804653e4ee038d7401c30b34b5726231ce121d244f4a` |
 
-## v1.02 변경 내용
+## v1.03 변경 내용
 
-- 홈런 뒤 연출 중 간헐적으로 종료되는 원인을 수정했습니다. 게임 내부 분기표의 숫자 두 항목이 번역 대상으로 잘못 분류돼 실행 흐름이 바뀌던 문제였습니다.
-- 2022·2021 프로그램에서 해당 분기표를 각각 원래 값으로 복원했습니다. 실행 파일의 압축 해제된 내용은 시즌별 2바이트만 변경했습니다.
-- v1.01의 번역·이미지·글꼴·얼굴 편집 수정·입문 안내·땅볼 표기·한국 대표팀 명단과 체형 보정은 유지했습니다.
+- 그랑프리 모드의 오늘 경기 총평에서 `기록って`, `승리제압めた`처럼 일본어 어미가 붙던 문제를 수정했습니다.
+- 득점·동점·역전·승패·투구 이닝 문구의 어미와 띄어쓰기를 수정했습니다.
+- 선수명·팀명·타격 내용에 맞춰 이/가·을/를을 붙입니다.
+- 총평의 홈런 종류를 솔로 홈런·2점 홈런·3점 홈런·만루 홈런으로 표시합니다.
+- 2022·2021 시즌 프로그램 모두 수정했으며 v1.02의 홈런 연출 종료 수정은 유지했습니다.
 
-기존 사용자도 동일한 **일본어 원본 두 파일**로 새 결과를 만듭니다. 이전 한국어 NSP를 입력하지 마세요. 패치 버전 1.02와 게임 자체의 버전 표시(2022 프로그램 1.12.0)는 별개입니다.
+기존 사용자도 일본어 원본 베이스·업데이트 두 파일로 새 결과를 만듭니다. 이전 한국어 NSP를 입력하지 마세요.
 
 ## 확인 범위와 제한
 
-- 제보 로그와 동일한 중단 위치와 잘못된 접근 주소를 기존 버전의 실제 ARM64 명령으로 재현했습니다. 같은 시험에서 수정본은 원래 분기로 복귀했습니다.
-- 두 시즌 24개 분기 선택·범위 경계·주소 배치 시험, 10,284개 분기표의 원본 대조, NSO 재압축·재판독, 컨테이너 무결성, xdelta 설치 결과의 전체 해시를 검증했습니다.
-- 이번 버전의 실제 게임 플레이·에뮬레이터 실행 시험은 사용자 요청으로 생략했습니다. Switch 실기 확인은 제작자가 직접 진행합니다. 자동 명령 시험을 실기 플레이 통과로 표시하지 않습니다.
-- 제보의 원인에 대한 수정이며 모든 형태의 게임 종료나 장기 시즌 전체 진행을 검증한 것은 아닙니다.
-- 체형 보정은 신장·체중 비율을 게임의 네 가지 프리셋으로 근사한 설정입니다. 기존의 일부 미번역 항목과 설명서 웹 앱릿 제약은 남아 있습니다.
+- 정확한 v1.02 실행 파일에서 제보와 같은 일본어 혼합 문구를 네이티브 ARM64 조립 코드로 재현했습니다.
+- 두 시즌 15,552개 자동 검사를 통과했습니다. 문장 조립, 기존 16바이트 어미 버퍼 경계, 서로 다른 로드 주소, 글꼴이 지원하는 한글 2,351자의 받침 처리, 문장 표현 변형을 포함합니다.
+- 네이티브 검사에서는 printf·메모리 복사·선수명 조회를 시험용 구현으로 대체했습니다. 실제 게임 전체를 실행한 검사는 아닙니다.
+- 실행 파일 재압축·재판독, 기존 숫자 분기표 보호, 컨테이너 무결성과 설치 결과의 전체 SHA-256을 검증합니다. 최종 검사 결과는 verification.json에 기록합니다.
+- **실기 및 에뮬레이터 화면 확인은 아직 하지 않았습니다.** 줄바꿈·화면 배치·장기 경기 진행 검증은 남아 있습니다.
+- 기존의 일부 미번역 항목과 설명서 웹 앱릿 제약은 남아 있습니다. 대표팀 체형은 신장·체중 비율을 네 가지 프리셋으로 근사한 설정입니다.
 
 ## 중단·재실행·되돌리기
 
